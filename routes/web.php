@@ -1,16 +1,6 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AgenciaController;
-use App\Http\Controllers\ClienteController;
-use App\Http\Controllers\DividaController;
-use App\Http\Controllers\EnderecoController;
-use App\Http\Controllers\FichaContratoController;
-use App\Http\Controllers\LinhaController;
-use App\Http\Controllers\MultaController;
-use App\Http\Controllers\NotificacaoController;
-use App\Http\Controllers\PagamentoController;
-use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,32 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-/* ROUTAS COMPOSTAS DO SISTEMA */
-
-Route::resources([
-    'admin' => AdminController::class,
-    'linha' => LinhaController::class,
-    'multa' => MultaController::class,
-    'pedido' => PedidoController::class,
-    'divida' => DividaController::class,
-    'agencia' => AgenciaController::class,
-    'cliente' => ClienteController::class,
-    'endereco' => EnderecoController::class,
-    'pagamento' => PagamentoController::class,
-    'notificacao' => NotificacaoController::class,
-    'Ficha_contrato' => FichaContratoController::class
-    ]);
-
-
-/* ROUTAS COMPLEMENTARES DAS COMPOSTAS */
-
-
-use Barryvdh\DomPDF\Facade\Pdf;
-
-Route::get('/teste', function(){
-    $pdf = Pdf::loadView('welcome');
-    return $pdf->download('invoice.pdf');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
+require __DIR__.'/auth.php';

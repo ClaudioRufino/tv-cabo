@@ -14,8 +14,8 @@ class Notificacao extends Model
         'estado',
         'assunto',
         'descricao',
-        /* Chave Estrangeira */
-        'admin_id'
+        
+        'admin_id' /* Chave Estrangeira */
     ];
 
     

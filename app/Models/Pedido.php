@@ -13,8 +13,8 @@ class Pedido extends Model
         'data',
         'assunto',
         'descricao',
-        /* Chave Estrangeira */
-        'cliente_id'
+        
+        'cliente_id' /* Chave Estrangeira */
     ];
 
     public function cliente(){

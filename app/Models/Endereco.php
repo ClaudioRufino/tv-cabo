@@ -11,8 +11,8 @@ class Endereco extends Model
 
     protected $fillable = [
         'rua',
-        'linha_id',
-        'num_casa'
+        'num_casa',
+        'linha_id'
     ];
 
     public function linha(){

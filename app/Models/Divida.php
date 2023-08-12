@@ -15,8 +15,8 @@ class Divida extends Model
         'valor',
         'estado',
         'data_vencimento',
-        /* Chave Estrangeira */
-        'cliente_id'
+        
+        'cliente_id'/* Chave Estrangeira */
     ];
 
     public function cliente(){

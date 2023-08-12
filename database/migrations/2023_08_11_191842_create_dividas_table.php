@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('dividas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('ano');
+            $table->string('mes');
+            $table->double('valor');
+            $table->string('estado');
+            $table->date('data_vencimento');
+            $table->foreignId('cliente_id')->constrained('clientes');/* Chave Estrangeira */
         });
     }
 

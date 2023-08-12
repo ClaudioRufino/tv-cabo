@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('ficha__contratos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('dia_pagamento');
+            $table->date('data_contrato');
+            $table->foreignId('cliente_id')->constrained('clientes'); /* Chave Estrangeira */
         });
     }
 

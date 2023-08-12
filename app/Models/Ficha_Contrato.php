@@ -12,8 +12,8 @@ class Ficha_Contrato extends Model
     protected $fillable = [
         'dia_pagamento',
         'data_contrato',
-        /* Chave Estrangeira */
-        'cliente_id'
+        
+        'cliente_id'/* Chave Estrangeira */
     ];
 
 

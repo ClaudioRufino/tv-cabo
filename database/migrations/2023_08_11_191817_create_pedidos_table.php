@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->date('data');
+            $table->string('assunto');
+            $table->string('descricao');
+            $table->foreignId('cliente_id')->constrained('clientes'); /* Chave Estrangeira */
         });
     }
 

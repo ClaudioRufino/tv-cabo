@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('multas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('valor');
+            $table->string('estado');
+            $table->string('descricao'); 
+            $table->date('data_emissao');
+            $table->date('data_vencimento');
+            $table->foreignId('cliente_id')->constrained('clientes'); /* Chave Estrangeira */
         });
     }
 

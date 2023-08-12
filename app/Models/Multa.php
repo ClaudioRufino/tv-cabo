@@ -15,8 +15,8 @@ class Multa extends Model
         'descricao',
         'data_emissao',
         'data_vencimento',
-        /* Chave Estrangeira */
-        'cliente_id'
+       
+        'cliente_id'  /* Chave Estrangeira */
     ];
 
 

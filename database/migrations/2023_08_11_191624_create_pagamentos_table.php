@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('pagamentos', function (Blueprint $table) {
             $table->id();
+            $table->string('mes');
+            $table->string('ano');
+            $table->double('valor');
+            $table->string('data_pagamento');
+
+            $table->foreignId('admin_id')->constrained('admins'); /* Chave Estrangeira */
+            $table->foreignId('cliente_id')->constrained('clientes'); /* Chave Estrangeira */
+            
             $table->timestamps();
         });
     }

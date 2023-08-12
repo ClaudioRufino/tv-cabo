@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('notificacaos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('data');
+            $table->string('estado');
+            $table->string('assunto');
+            $table->string('descricao');
+            $table->foreignId('admin_id')->constrained('admins'); /* Chave Estrangeira */
         });
     }
 

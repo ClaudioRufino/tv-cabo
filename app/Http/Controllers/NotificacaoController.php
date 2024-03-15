@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Notificacao;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Sabberworm\CSS\Value\Size;
 
 class NotificacaoController extends Controller
 {
@@ -12,7 +14,16 @@ class NotificacaoController extends Controller
      */
     public function index()
     {
-        //
+        // Listando todas as notificações para o dia de hoje
+        $clientes = DB::table('clientes as c')
+        ->join('notificacaos as n', 'c.id', '=', 'n.cliente_id')
+        ->select(DB::raw('c.id, c.nome, c.contacto, n.data'))
+        ->where('n.data', '=', date('Y-m-d'))
+        ->where('c.estado', 1)
+        ->get();
+
+        // return date('Y-m-d');
+        return view('notificacao.index', ['clientes'=> $clientes]);
     }
 
     /**
@@ -61,5 +72,21 @@ class NotificacaoController extends Controller
     public function destroy(Notificacao $notificacao)
     {
         //
+    }
+
+    public function existeNotificacao(){
+
+        $clientes = DB::table('clientes as c')
+        ->join('notificacaos as n', 'c.id', '=', 'n.cliente_id')
+        ->select(DB::raw('c.id, c.nome, c.contacto, n.data'))
+        ->where('n.data', '=', date('Y-m-d'))
+        ->where('c.estado', 1)
+        ->get();
+
+        if(count($clientes) != 0){
+             return response()->json(['existe' => true]);
+        } else {
+             return response()->json(['existe' => false]);
+        }
     }
 }

@@ -15,8 +15,11 @@ class Notificacao extends Model
         'assunto',
         'descricao',
         
-        'admin_id' /* Chave Estrangeira */
+        'cliente_id' /* Chave Estrangeira */
     ];
 
+    public function cliente(){
+        return $this->belongsTo(Cliente::class);
+    }
     
 }

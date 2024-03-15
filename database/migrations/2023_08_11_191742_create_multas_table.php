@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('estado');
             $table->string('descricao'); 
             $table->date('data_emissao');
-            $table->date('data_vencimento');
+            $table->date('data_vencimento')->nullable();
             $table->foreignId('cliente_id')->constrained('clientes'); /* Chave Estrangeira */
         });
     }

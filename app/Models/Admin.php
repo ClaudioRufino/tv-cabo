@@ -11,9 +11,10 @@ class Admin extends Model
 
     protected $fillable = [
         'nome',
-        'contacto',
         'email',
-        'senha'
+        'foto',
+        'senha',
+        'contacto',
     ];
 
     public function notificacao(){

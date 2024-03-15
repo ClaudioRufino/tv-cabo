@@ -10,6 +10,8 @@ class Pedido extends Model
     use HasFactory;
 
     protected $fillable = [
+        'ano',
+        'mes',
         'data',
         'assunto',
         'descricao',

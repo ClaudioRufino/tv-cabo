@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('estado');
             $table->string('assunto');
             $table->string('descricao');
-            $table->foreignId('admin_id')->constrained('admins'); /* Chave Estrangeira */
+            $table->foreignId('cliente_id')->constrained('clientes'); /* Chave Estrangeira */
         });
     }
 

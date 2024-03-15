@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
+            $table->string('ano');
+            $table->string('mes');
             $table->timestamps();
             $table->date('data');
             $table->string('assunto');

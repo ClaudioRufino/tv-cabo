@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Cliente;
+use App\Models\Ficha_Contrato;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -12,7 +15,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $administradores = Admin::all();
+        return view('admin.index', compact('administradores'));
+
     }
 
     /**
@@ -20,7 +25,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create');
     }
 
     /**
@@ -29,6 +34,7 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         //
+        return $request->foto;
     }
 
     /**
@@ -45,6 +51,7 @@ class AdminController extends Controller
     public function edit(Admin $admin)
     {
         //
+        return "Clicaste em Editar";
     }
 
     /**
@@ -61,5 +68,26 @@ class AdminController extends Controller
     public function destroy(Admin $admin)
     {
         //
+    }
+
+    public function inscritos_no_mes(int $mes):int
+    {
+        $total = Ficha_Contrato::whereMonth('data_contrato', $mes)->whereYear('data_contrato', date('Y'))->count('id');
+        return $total;
+    }
+
+    public function total_inscritos_no_mes(int $mes):int
+    {
+        $total = DB::table('clientes as c')
+        ->select(DB::raw('count(c.id) as total'))
+        ->join('ficha__contratos as f', 'c.id', '=', 'f.id')
+        ->whereYear('f.data_contrato', '<=', date('Y'))
+        ->whereMonth('f.data_contrato' , '<=', $mes)
+        ->get();
+        return $total[0]->total;
+    }
+
+    public function teste(Request $request){
+        return View('welcome');
     }
 }

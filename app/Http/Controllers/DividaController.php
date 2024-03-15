@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
 use App\Models\Divida;
 use Illuminate\Http\Request;
 
@@ -34,9 +35,12 @@ class DividaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Divida $divida)
+    public function show(int $id)
     {
         //
+        $cliente = Cliente::find($id);
+        $dividas = Divida::all()->where('cliente_id', $id)->where('estado', '1');
+        return view('divida.show', ['dividas' => $dividas, 'cliente' => $cliente]);
     }
 
     /**

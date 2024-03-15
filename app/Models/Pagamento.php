@@ -15,7 +15,7 @@ class Pagamento extends Model
         'valor',
         'data_pagamento',
         
-        'admin_id',  /* Chave Estrangeira */
+        'user_id',  /* Chave Estrangeira */
         'cliente_id' /* Chave Estrangeira */
     ];
 
@@ -23,7 +23,7 @@ class Pagamento extends Model
         return $this->belongsTo(Cliente::class);
     }
 
-    public function admin(){
+    public function user(){
         return $this->belongsTo(Admin::class);
     }
 }

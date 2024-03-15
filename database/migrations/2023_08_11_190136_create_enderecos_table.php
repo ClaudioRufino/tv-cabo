@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('enderecos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('rua');
+            // $table->string('rua');
             $table->string('num_casa')->nullable();
+            $table->string('descricao')->nullable();
             $table->foreignId('linha_id')->constrained('linhas');
+            $table->foreignId('cliente_id')->constrained('clientes'); // Chave estrangeira
         });
     }
 

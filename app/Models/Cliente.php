@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Cliente extends Model
 {
@@ -13,33 +15,45 @@ class Cliente extends Model
         'nome',
         'contacto',
         'genero',
-        'BI',
-        'foto',
-        /* Chave Estrangeira */
-        'endereco_id'
+        // 'BI',
+        'foto', 
+        'estado'
+        
+        //'endereco_id' /* Chave Estrangeira */
     ];
 
-    public function endereco(){
+    public function endereco(): HasOne
+    {
         return $this->hasOne(Endereco::class);
     }
 
-    public function ficha_contrato(){
+    public function ficha_contrato(): HasOne
+    {
         return $this->hasOne(Ficha_Contrato::class);
     }
 
-    public function multa(){
+    public function multa(): HasMany
+    {
         return $this->hasMany(Multa::class);
     }
 
-    public function divida(){
+    public function divida(): HasMany
+    {
         return $this->hasMany(Divida::class);
     }
 
-    public function pedido(){
+    public function pedido(): HasMany
+    {
         return $this->hasMany(Pedido::class);
     }
 
-    public function pagamento(){
+    public function pagamento(): HasMany
+    {
         return $this->hasMany(Pagamento::class);
+    }
+
+    public function notificacao(): HasMany
+    {
+        return $this->hasMany(Notificacao::class);
     }
 }

@@ -1,22 +1,52 @@
-{{-- @extends('layout.container.pagina') --}}
+@extends('layout.container.pagina')
 
-{{-- @section('conteudo') --}}
-<h2>
-    Sou apenas uma página para testes
-</h2>
+@section('conteudo')
+<div>
 
-<form action="{{route('user.teste', 1)}}" method="get">
-    <button>Testar</button>
-</form>
+<br>
 
-
-@isset($mensagem)
-    <div class="form-group mb-3">
-        <div class="alert alert-danger text-center" role="alert" id="mensagem" style="display: none">
-            {{$mensagem}}
+<div class="row">
+    <div id="meu_modal">
+        <div class="modal_content">
+            <div class="spinner-border mr-3" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
         </div>
     </div>
-@endisset
+</div>
 
 
-{{-- @endsection --}}
+
+</div>
+
+<script>
+
+    modal = document.getElementById('meu_modal');
+    
+    fazerRequisicao();
+
+    function fazerRequisicao() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://consulta.edgarsingui.ao/consultar/008336670BO045', true);
+
+            modal.style.display = 'block';
+            
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log('Sucesso');
+                        modal.style.display = 'none';
+                    } 
+                }
+                else{
+                    console.log('Esperando...')
+                }
+            };
+
+            xhr.send();
+        }
+
+</script>
+
+
+@endsection

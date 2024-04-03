@@ -94,6 +94,14 @@ Route::get('page3', function(){
 })->name('page3');
 
 
+
+Route::get('teste', function(){
+    return view('teste');
+})->name('teste');
+
+
+
+
 /** Routas geradas pelo Breeze para Autenticação */
 
 Route::middleware('auth')->group(function () {

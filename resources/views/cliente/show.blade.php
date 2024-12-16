@@ -148,7 +148,7 @@
           <th class="bg-primary">Mes</th>
           <th class="bg-primary">Estado</th>
           <th class="bg-primary">Atendido por</th>
-          <th class="bg-primary">Action</th>
+          <th class="bg-primary">Acção</th>
         </tr>
       </thead>
       <tbody>

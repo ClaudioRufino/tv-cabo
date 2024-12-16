@@ -54,16 +54,18 @@
               <input type="number" id="valor" class="form-control" name="valor" value="{{$valor}}">
             </div>
 
+            <button type="submit" class="btn mb-2 btn-primary btn-lg btn-block">Pagar Multa</button>
+
           </div> 
 
-          <div class="col-md-6 text-center" style="border:px solid #ddd"> 
+          <div class="col-md-6 text-center" style="border:1px solid #ddd; border-radius:50px;"> 
               <img 
-                  src="{{url('light/assets/images/multa.jpg')}}" 
+                  src="{{url('light/assets/images/payment.png')}}" 
                   id="img_pagamento" 
                   alt="imagem descrevendo pagamento de multa"
                   style="width:90%; height:290px;border-radius:5px; margin-top:20px; margin-bottom:2px">
               <br>
-              <button type="submit" class="btn mb-2 btn-primary btn-lg btn-block">Pagar Multa</button>
+              
           </div> 
           
         </div>

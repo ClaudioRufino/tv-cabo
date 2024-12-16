@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,7 +27,6 @@
             <img src="{{url('light/assets/images/logo-tvcj.png')}}" alt="logo_isutic" 
             style="width:80%; border-radius:50%; margin-bottom:10px">
           </a>
-          {{-- <h1 class="h6 mb-3"></h1> --}}
           <div class="form-group">
             <label for="inputEmail" class="sr-only">Email address</label>
             <input 
@@ -36,10 +35,12 @@
                   class="form-control form-control-lg" 
                   placeholder="Email address" 
                   name="email"
+
+                  value="maicon@gmail.com"
                   required autofocus="">
-                  <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                  
+                {{-- Estava aqui --}}
           </div>
+                  
           <div class="form-group">
             <label for="inputPassword" class="sr-only">Password</label>
             <input 
@@ -48,17 +49,19 @@
                   class="form-control form-control-lg" 
                   placeholder="Password" 
                   name="password"
-                  required>
-                  <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                  required
+            >
+                  
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                  
           </div>
-          <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me"> Guardar senha </label>
-          </div>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+          
+          <button class="btn btn-lg btn-primary btn-block mt-4" type="submit">Entrar</button>
 
           <div class="mt-2">
-            <a href="{{route('admin.create')}}">Registar</a>
+            <a class="btn btn-lg btn-success btn-block text-light" href="{{route('admin.create')}}">Registar</a>
           </div>
           <p class="mt-5 mb-3 text-muted">© {{date("Y")}}</p>
 

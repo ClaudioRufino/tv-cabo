@@ -223,7 +223,13 @@ class ClienteController extends Controller
      */
     public function destroy(int $id)
     {
-        return "Destroy";
+
+        // return $id;
+        // return $id;
+        $cliente = Cliente::find($id);
+        $cliente->estado = 0;
+        $cliente->save();
+        return redirect()->route('cliente.index');
     }
 
     public function ativar(int $id)

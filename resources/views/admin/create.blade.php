@@ -8,101 +8,89 @@
 <div class="col-12 col-xl-10">
     <div class="row align-items-center my-4">
         <div class="col">
-          <h2 class="h3 mb-0 page-title">Cadastrar Administrador</h2>
+          <h4 class="h3 mb-0 page-title">Cadastrar Administrador</h4>
         </div>
         
-        <form  method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+        
+    </div>
+    
+    <hr class="my-4">
+
+    <form  method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
           @csrf
-            <div class="col-auto">
-            <button type="submit" class="btn btn-primary" id="btn_cadastrar">Cadastrar</button>
+            
+
+    @isset($mensagem)
+        <div class="form-group mb-3">
+            <div class="alert alert-success text-center" role="alert" id="mensagem">
+                {{$mensagem}}
             </div>
-                </div>
-                <hr class="my-4">
-                <div class="row">
-                <div class="col-md-8 mb-4">
-                    <div class="card shadow">
-                    <div class="card-body">
-                        <div class="form-group mb-0">
-                            <label for="example-select">Nome</label>
-                            <input type="text" class="form-control" id="nome" name="name" required>
-                            <span id="nome_mensagem" class="error-message"></span>
-                        </div>
+            <div class="mt-2">
+                <a href="{{route('login')}}" class="btn btn-primary btn-block">Login</a>
+            </div>
+        </div>
+    @endisset
 
-                        <div class="form-group mb-0">
-                        <label for="example-multiselect">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                            <span id="email_mensagem" class="error-message"></span>
-                        </div>
-
-                        <div class="form-group mb-0">
-                            <label for="data_vencimento">Contacto</label>
-                            <input type="number" class="form-control" name="contacto" id="contacto" required>
-                            <span id="contacto_mensagem" class="error-message"></span>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="data_emissao">Senha</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
-
-                        <div class="form-group mb-0">
-                            <label for="c_senha">Confirmar senha</label>
-                            <input type="password" class="form-control" id="c_senha" name="c_senha" required>
-                            <span id="senha_mensagem" class="error-message"></span>
-                        </div>
-
-                    </div>
-                    </div> 
-                </div>
-
+    <div class="row">
         <div class="col-md-8 mb-4">
             <div class="card shadow">
-
             <div class="card-body">
+                <div class="form-group mb-0">
+                    <label for="example-select">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="name" required>
+                    <span id="nome_mensagem" class="error-message"></span>
+                </div>
+
+                <div class="form-group mb-0">
+                <label for="example-multiselect">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                    <span id="email_mensagem" class="error-message"></span>
+                </div>
+
+                <div class="form-group mb-0">
+                    <label for="data_vencimento">Contacto</label>
+                    <input type="number" class="form-control" name="contacto" id="contacto" required>
+                    <span id="contacto_mensagem" class="error-message"></span>
+                </div>
 
                 <div class="form-group mb-3">
+                    <label for="data_emissao">Senha</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+
+                <div class="form-group mb-0">
+                    <label for="c_senha">Confirmar senha</label>
+                    <input type="password" class="form-control" id="c_senha" name="c_senha" required>
+                    <span id="senha_mensagem" class="error-message"></span>
+                </div>
+
+                <div class="form-group mb-1">
                     <label for="c_senha">Senha do Admin Principal</label>
                     <input type="password" class="form-control" id="a_senha" name="a_senha" required>
                     <span id="a_senha_mensagem" class="error-message"></span>
                 </div>
 
-                <div class="form-group mb-3">
+                <div class="form-group">
                     <div class="card shadow mb-4">
                         <div class="card-header">
-                          <strong>Carregamento de foto</strong>
+                            <strong>Carregamento de foto</strong>
                         </div>
-                        <div class="card-body">
-                          <input type="file" class="form-control" name="foto" id="foto">
-                          <span id="file_mensagem" class="error-message"></span>
-                        </div> 
-                      </div>
+                        <input type="file" class="form-control" name="foto" id="foto">
+                        <span id="file_mensagem" class="error-message"></span>
+                    </div>
+                </div>
+
+                <div class="col-auto text-right">
+                    <button type="submit" class="btn btn-primary" id="btn_cadastrar">Cadastrar</button>
                 </div>
 
             </div>
+            </div> 
         </div>
-        </div>
 
-       
+</form>
 
-    </form>
-
-    
-    </div>
-
-     @isset($mensagem)
-     <div class="form-group mb-3">
-        <div class="alert alert-danger text-center" role="alert" id="mensagem" style="display: noe">
-            {{$mensagem}}
-        </div>
-        <div class="mt-2">
-            <form method="POST" action="{{route('logout')}}" style="margin:0">  
-                @csrf
-                <button type="submit" class="btn btn-primary">Entrar</button>
-            </form>
-            {{-- <a href="{{route('login')}}"> Entrar direito </a> --}}
-          </div>
-    </div>
-@endisset
+</div>
 
 
 </div>

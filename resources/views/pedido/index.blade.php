@@ -14,13 +14,13 @@
                     <table class="table table-hover table-borderless border-v">
                         <thead class="thead-dark">
                         <tr>
-                        <th class="bg-info">ID</th>
-                        <th class="bg-info">Nome</th>
-                        <th class="bg-info">Contacto</th>
-                        <th class="bg-info">Assunto</th>
-                        <th class="bg-info">Descrição</th>
-                        <th class="bg-info">Data</th>
-                        <th class="bg-info">Acção</th>
+                        <th class="bg-primary">ID</th>
+                        <th class="bg-primary">Nome</th>
+                        <th class="bg-primary">Contacto</th>
+                        <th class="bg-primary">Assunto</th>
+                        <th class="bg-primary">Descrição</th>
+                        <th class="bg-primary">Data</th>
+                        <th class="bg-primary">Acção</th>
                         </tr>
                     </thead>
                     <tbody>

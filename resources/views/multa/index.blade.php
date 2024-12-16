@@ -21,7 +21,7 @@
                   height:50px;
                   margin-left:4px;
             ">
-          <button class="btn btn-info"><i class="fe fe-plus"></i></button>
+          <button class="btn btn-primary"><i class="fe fe-plus"></i></button>
       </form>
       <div class="card shadow">
         <div class="card-body">
@@ -29,13 +29,13 @@
           <table class="table table-hover table-borderless border-v">
             <thead class="thead-dark">
               <tr>
-                <th class="bg-info">Código</th>
-                <th class="bg-info text-left">Nome</th>
-                <th class="bg-info">Contacto</th>
-                <th class="bg-info">Data de Vencimento</th>
-                <th class="bg-info">Valor</th>
-                <th class="bg-info">Estado</th>
-                <th class="bg-info">Acção</th>
+                <th class="bg-primary">Código</th>
+                <th class="bg-primary text-left">Nome</th>
+                <th class="bg-primary">Contacto</th>
+                <th class="bg-primary">Data de Vencimento</th>
+                <th class="bg-primary">Valor</th>
+                <th class="bg-primary">Estado</th>
+                <th class="bg-primary">Acção</th>
               </tr>
             </thead>
             <tbody>
@@ -47,7 +47,7 @@
                     <td>{{$cliente->contacto}}</td>
                     <td class="text-center">0000-00-00</td>
                     <td>{{$cliente->multa}}</td>
-                    <td><span class="badge badge-pill badge-success mr-2">Não Pago</span><small class="text-muted"></small></td>
+                    <td><span class="badge badge-pill badge-danger mr-2">Não Pago</span><small class="text-muted"></small></td>
                     <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="text-muted sr-only">Acção</span>
                     </button>

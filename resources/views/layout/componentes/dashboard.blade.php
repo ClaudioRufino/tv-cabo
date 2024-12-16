@@ -1,5 +1,5 @@
 
-<aside class="sidebar-left border-right bg-dashboard shadow" id="leftSidebar" data-simplebar> <!-- bg-primary Light para primary-->
+<aside class="sidebar-left border-right bg-light shadow" id="leftSidebar" data-simplebar> <!-- bg-primary Light para primary-->
     <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
       <i class="fe fe-x"><span class="sr-only"></span></i>
     </a>

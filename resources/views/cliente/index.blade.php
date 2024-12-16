@@ -16,13 +16,13 @@
                       <table class="table table-hover table-borderless border-v">
                         <thead class="thead-dark">
                           <tr>
-                            <th class="bg-info">Id</th>
-                            <th class="bg-info">Foto</th>
-                            <th class="bg-info">Nome</th>
-                            <th class="bg-info">Telefone</th>
-                            <th class="bg-info">Género</th>
-                            <th class="bg-info">Rua</th>
-                            <th class="bg-info">Acção</th>
+                            <th class="bg-primary">Id</th>
+                            <th class="bg-primary">Foto</th>
+                            <th class="bg-primary">Nome</th>
+                            <th class="bg-primary">Telefone</th>
+                            <th class="bg-primary">Género</th>
+                            <th class="bg-primary">Rua</th>
+                            <th class="bg-primary">Acção</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -45,24 +45,49 @@
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right">
                                           <a class="dropdown-item" href="{{route('cliente.edit', $cliente->id)}}">Editar</a>
-                                          <form action="{{route('cliente.destroy', $cliente->id)}}" method="post" class="form_apagar">
-                                              @csrf
-                                              @method('DELETE')
-                                              <input type="hidden" name="id_cliente" class="cliente_id" value="{{ $cliente->id }}">
-                                              <button type="submit" class="apagar-button dropdown-item" data-cliente-id="{{ $cliente->id}}">Apagar</button>
-                                          </form>
+                                          <button type="button" data-id="{{$cliente->id}}" class="apagar-button dropdown-item" data-toggle="modal" data-target="#varyModal">Apagar</button>
                                           <a class="dropdown-item" href="{{route('cliente.show', $cliente->id)}}">Perfil</a>
-                                    </div>
+                                        </div>
+
                                     </td>
                                 </tr>
                           
                           @endforeach
-                          
+
+                          <div class="modal fade" id="varyModal" tabindex="-1" role="dialog" aria-labelledby="varyModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="varyModalLabel">Eliminar</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="ml-4 mt-4">Deseja realmente eliminar?</label>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        {{-- {{route('cliente.destroy', $cliente->id)}} --}}
+                                        <form  id="modal-delete-form" action="#" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                            <button type="submit" class="btn btn-danger mb-2">Eliminar</button>
+                                        </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
                         </tbody>
                       </table>
+
                       <div class="pagination">
                         {{ $clientes->links() }}
                       </div>
+
                     </div>
                   </div>
                 </div> <!-- simple table -->
@@ -70,44 +95,27 @@
         </div>
 
     <script>
-    
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+    // Seleciona todos os botões "Apagar"
     const apagarButtons = document.querySelectorAll('.apagar-button');
 
+    // Seleciona o formulário dentro do modal
+    const deleteForm = document.getElementById('modal-delete-form');
+
+    // Adiciona evento de clique a cada botão "Apagar"
     apagarButtons.forEach(button => {
-      button.addEventListener('click', function(e) {
-        var form = button.closest('form');
-        e.preventDefault();
+        button.addEventListener('click', function () {
+            // Recupera o ID do cliente do botão clicado
+            const clienteId = button.getAttribute('data-id');
 
-        var input_id = form.querySelector('.cliente_id');
-        cliente_id = Number(input_id.value);
-
-        linha =  input_id.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-        linha_index = input_id.parentNode.parentNode.parentNode.parentNode.rowIndex; 
-
-        apaga_linha = linha.deleteRow(linha_index);
-
-        async function clientes(){
-            const response = await fetch('http://localhost:8000/api/clientes/'+cliente_id,
-            {
-                method:'PUT',
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-            const clientes = await response.json();
-            return clientes;
-        }
-
-        const cliente = clientes();
-
-        cliente.then(
-            clientes=>{
-                console.log(clientes);
-            }
-        );
-
+            // Atualiza o atributo "action" do formulário com o ID do cliente
+            deleteForm.action = `/cliente/${clienteId}`;
         });
     });
+});
+
 
     
 

@@ -73,7 +73,7 @@ Route::get('calendario', function(){
 })->middleware(['auth', 'verified'])->name('calendario');
 
 Route::get('/', function(){
-    return view('welcome');
+    return view('auth.login');
 });
 
 

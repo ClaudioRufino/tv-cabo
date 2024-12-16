@@ -12,15 +12,13 @@
       <p class="mb-3">A tabela abaixo apresenta todos os administradores do sistema!</p>
       <form 
             action="{{route('admin.create')}}" 
-            method="get" 
+            method="GET" 
             class="text-right"
-            style="
-                  position: relative;
+            style="position: relative;
                   float:right;
                   margin-top:22px;
                   height:50px;
-                  margin-left:4px;
-            ">
+                  margin-left:4px;">
       </form>
       <div class="card shadow">
         <div class="card-body">
@@ -28,12 +26,12 @@
           <table class="table table-hover table-borderless border-v">
             <thead class="thead-dark">
               <tr>
-                <th class="bg-info text-left">Código</th>
-                <th class="bg-info text-left">Foto</th>
-                <th class="bg-info text-left">Nome</th>
-                <th class="bg-info text-left">Contacto</th>
-                <th class="bg-info text-left">Email</th>
-                <th class="bg-info">Acção</th>
+                <th class="bg-primary text-left">Código</th>
+                <th class="bg-primary text-left">Foto</th>
+                <th class="bg-primary text-left">Nome</th>
+                <th class="bg-primary text-left">Contacto</th>
+                <th class="bg-primary text-left">Email</th>
+                <th class="bg-primary">Acção</th>
               </tr>
             </thead>
             <tbody>
@@ -56,11 +54,11 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item"  href="{{route('user.edit', $admin->id)}}">Editar</a>
                         <form action="{{route('admin.destroy', $admin->id)}}" method="post" class="form_apagar">
-                          @csrf
-                          @method('DELETE')
-                          <input type="hidden" name="id_admin" class="admin_id" value="{{ $admin->id }}">
-                          <button type="submit" class="apagar-button dropdown-item" data-cliente-id="{{ $admin->id}}">Apagar</button>
-                      </form>
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="id_admin" class="admin_id" value="{{ $admin->id }}">
+                            <button type="submit" class="apagar-button dropdown-item" data-cliente-id="{{ $admin->id}}">Apagar</button>
+                        </form>
                     </div>
                     </td>
                 </tr>

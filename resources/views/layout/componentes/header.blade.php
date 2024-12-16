@@ -50,14 +50,23 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="avatar avatar-sm mt-2">
-              {{-- <img class="avatar-img rounded-circle" src="{{url('light/assets/avatars/admin/'. App\Models\User::find(Auth::id())->foto)}}" alt="Avatar representado o Usuário Activo"> --}}
+                @php
+                    $user = Auth::user();
+                @endphp
+
+                @if($user->foto == "light/assets/avatars/admin/padrao.png")
+                    <img class="avatar-img rounded-circle" src="{{url($user->foto)}}" alt="Avatar representado o Usuário Activo">
+                @else
+                    <img class="avatar-img rounded-circle" src="{{url('light/assets/avatars/admin/'. App\Models\User::find(Auth::id())->foto)}}" alt="Avatar representado o Usuário Activo">
+                @endif
+
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
             <form method="POST" action="{{route('logout')}}" style="margin:0">  
               @csrf
               <button type="submit" class="dropdown-item">Sair</button>
-          </form>
+            </form>
           </div>
         </li>
 

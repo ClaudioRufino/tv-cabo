@@ -73,16 +73,18 @@
                 <div class="alert alert-danger text-center" role="alert" id="mensagem" style="display: none"> </div>
             </div>
 
+            <button type="submit" class="btn mb-2 btn-info btn-lg btn-block">Efectuar pagamento</button>
+
           </div> 
 
-          <div class="col-md-6 text-center" style="border:1px solid #ddd"> 
+          <div class="col-md-6 text-center" style="border:1px solid #ddd; border-radius:50px;"> 
               <img 
-                  src="{{url('light/assets/images/pagamento.jpg')}}" 
+                  src="{{url('light/assets/images/payment.png')}}" 
                   id="img_pagamento" 
                   alt="imagem descrevendo pagamento de mensalidade"
                   style="width:70%; height:290px;border-radius:5px; margin-top:20px">
               <br>
-              <button type="submit" class="btn mb-2 btn-info btn-lg btn-block">Efectuar pagamento</button>
+              
           </div> 
           
         </div>

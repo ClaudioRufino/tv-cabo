@@ -65,12 +65,11 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="recipient-name" class="ml-4 mt-4">Deseja realmente eliminar?</label>
+                                        <label for="recipient-name" class="ml-4 mt-4">Deseja realmente eliminar o item?</label>
                                     </div>
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Cancelar</button>
-                                        {{-- {{route('cliente.destroy', $cliente->id)}} --}}
                                         <form  id="modal-delete-form" action="#" method="POST">
                                                 @csrf
                                                 @method('DELETE')

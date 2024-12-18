@@ -43,7 +43,6 @@
                       <div class="avatar avatar-md">
                         <img src="{{url('light/assets/avatars/admin', $admin->foto)}}" alt="..." class="avatar-img rounded-circle">
                     </div>
-                      {{-- {{$admin->foto}} --}}
                     </td>
                     <td class="text-left">{{$admin->name}}</td>
                     <td class="text-left">{{$admin->contacto}}</td>
@@ -53,16 +52,39 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item"  href="{{route('user.edit', $admin->id)}}">Editar</a>
-                        <form action="{{route('admin.destroy', $admin->id)}}" method="post" class="form_apagar">
-                            @csrf
-                            @method('DELETE')
-                            <input type="hidden" name="id_admin" class="admin_id" value="{{ $admin->id }}">
-                            <button type="submit" class="apagar-button dropdown-item" data-cliente-id="{{ $admin->id}}">Apagar</button>
-                        </form>
+                        <input type="hidden" name="id_admin" class="admin_id" value="{{ $admin->id }}">
+                        <button type="submit" class="btnEliminarAdmin dropdown-item" data-id="{{ $admin->id }}" data-toggle="modal" data-target="#modalEliminarAdmin">Apagar</button>
                     </div>
                     </td>
                 </tr>
                 @endforeach
+
+                <div class="modal fade" id="modalEliminarAdmin" tabindex="-1" role="dialog" aria-labelledby="varyModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="varyModalLabel">Eliminar</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="form-group text-left">
+                                <label for="recipient-name" class="ml-4 mt-4">Deseja realmente eliminar o item? <br>
+                                       <span class="text-danger">OBS: Se eliminar o administrador poderá perder todos registos associado a ele.</span></label>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <form  id="modal-delete-form-admin" action="#" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                    <button type="submit" class="btn btn-danger mb-2">Eliminar</button>
+                                </form>
+                            </div>
+                    </div>
+                    </div>
+                </div>
 
             </tbody>
           </table>
@@ -74,44 +96,19 @@
 
 <script>
 
-const apagarButtons = document.querySelectorAll('.apagar-button');
+    document.addEventListener('DOMContentLoaded', function () {
 
-apagarButtons.forEach(button => {
-  button.addEventListener('click', function(e) {
-    var form = button.closest('form');
-    e.preventDefault();
+        const apagarButtons = document.querySelectorAll('.btnEliminarAdmin');
+        const deleteForm = document.getElementById('modal-delete-form-admin');
 
-    var input_id = form.querySelector('.admin_id');
-    admin_id = Number(input_id.value);
-
-    linha =  input_id.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-    linha_index = input_id.parentNode.parentNode.parentNode.parentNode.rowIndex; 
-
-    apaga_linha = linha.deleteRow(linha_index);
-
-    async function users(){
-        const response = await fetch('http://localhost:8000/api/users/'+admin_id,
-        {
-            method:'DELETE',
-            headers: {
-                'Accept': 'application/json'
-            }
+        apagarButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const adminId = button.getAttribute('data-id');
+                deleteForm.action = `/user/${adminId}`;
+            });
         });
-        const users = await response.json();
-        return users;
-    }
-
-    const admin = users();
-
-    admin.then(
-        admins=>{
-            console.log(admins);
-        }
-    );
-   
-
     });
-});
+
 
 </script>
 

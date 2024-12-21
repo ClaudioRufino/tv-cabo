@@ -22,7 +22,7 @@ class PedidoController extends Controller
 
         $clientes_pedido = DB::table('clientes as c')
                         ->join('pedidos as p', 'c.id', '=', 'p.cliente_id')
-                        ->select(DB::raw('c.id, c.nome, c.contacto, p.data, p.assunto, p.descricao'))
+                        ->select(DB::raw('c.nome, c.contacto, p.id, p.data, p.assunto, p.descricao'))
                         ->distinct()
                         ->get();
 
@@ -34,7 +34,6 @@ class PedidoController extends Controller
      */
     public function create()
     {
-        //
         return view('pedido.create');
     }
 
@@ -43,19 +42,26 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
         $data = explode('-', $request->data);
+
+        if(!$request->descricao){
+            $descricao = "Sem descrição.";
+        }
+        else{
+            $descricao = $request->descricao;
+        }
+
         $mes = $data[1];
         $ano = $data[0];
 
-        // return $ano;
         try {
                 $pedido = Pedido::create([
                     'ano' => $ano,
                     'mes' => $mes,
                     'data'=> $request->data,
+                    'descricao' => $descricao,
                     'assunto' => $request->assunto,
-                    'descricao' => $request->descricao,
                     'cliente_id' => $request->cliente_id
             ]);
 
@@ -89,8 +95,6 @@ class PedidoController extends Controller
 
         /** Histórico de pagamento */
         $pagamentos = Pagamento::all()->where('cliente_id', $id);
-
-        // return $pagamentos;
 
         /* Dívida do cliente */
         $dividas_total = Divida::all()->where('cliente_id', $id)->where('estado', '1')->sum('valor');
@@ -135,8 +139,12 @@ class PedidoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pedido $pedido)
+    public function destroy(int $id)
     {
-        //
+        $pedido = Pedido::find($id);
+        if($pedido){
+            $pedido->delete();
+        }
+        return redirect()->route('pedido.index');
     }
 }

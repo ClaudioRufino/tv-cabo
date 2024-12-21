@@ -11,7 +11,6 @@
                     <p class="mb-3 text-center">A tabela abaixo apresenta a lista geral de todos os clientes</p>
                     <div class="card shadow">
                         <div class="card-body">
-                            <!-- table -->
                             
                       <table class="table table-hover table-borderless border-v">
                         <thead class="thead-dark">
@@ -65,7 +64,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="recipient-name" class="ml-4 mt-4">Deseja realmente eliminar o item?</label>
+                                        <label for="recipient-name" class="ml-4 mt-4">Deseja realmente eliminar o cliente?</label>
                                     </div>
 
                                     <div class="modal-footer">
@@ -93,7 +92,7 @@
               </div> <!-- end section -->
         </div>
 
-    <script>
+<script>
 
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -115,10 +114,6 @@
     });
 });
 
-
-    
-
-
-    </script>
+</script>
 
 @endsection

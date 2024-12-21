@@ -55,9 +55,4 @@
             </div> <!-- end section -->
     </div>
 
-{{-- <script>
-
-   
-</script> --}}
-
 @endsection

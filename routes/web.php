@@ -79,13 +79,13 @@ Route::get('/', function(){
 
 Route::get('/clienteAtivar/{id}', [ClienteController::class, 'ativar'])->name('cliente.ativar');
 
-Route::get('teste', function(){
-    return view('paginacao');
-});
+// Route::get('teste', function(){
+//     return view('paginacao');
+// });
 
-Route::get('page1', function(){
-    return view('paginacao');
-})->name('page1');
+// Route::get('page1', function(){
+//     return view('paginacao');
+// })->name('page1');
 
 Route::get('/page2', [ClienteController::class, 'pagina2']);
 

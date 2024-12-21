@@ -83,7 +83,6 @@ class UserController extends Controller
             request()->foto->move(public_path('light/assets/avatars/admin'), $caminho);
         }
         
-
         $admin->name = $request->name;
         $admin->email = $request->email;
         $admin->contacto = $request->contacto;
@@ -102,7 +101,7 @@ class UserController extends Controller
         if($admin){
             $admin->delete();
         }
-        return redirect()->route('admin.index');
+        return redirect()->route('user.index');
     }
 
     public function inscritos_no_mes(int $mes):int

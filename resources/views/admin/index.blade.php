@@ -41,7 +41,11 @@
                     <td class="text-center">{{$admin->id}}</td>
                     <td class="text-left">
                       <div class="avatar avatar-md">
-                        <img src="{{url('light/assets/avatars/admin', $admin->foto)}}" alt="..." class="avatar-img rounded-circle">
+                        @if (str_starts_with($admin->foto, 'l'))
+                            <img src="{{url($admin->foto)}}" alt="..." class="avatar-img rounded-circle">
+                        @else
+                            <img src="{{url('light/assets/avatars/admin', $admin->foto)}}" alt="..." class="avatar-img rounded-circle">
+                        @endif
                     </div>
                     </td>
                     <td class="text-left">{{$admin->name}}</td>
@@ -71,7 +75,7 @@
 
                             <div class="form-group text-left">
                                 <label for="recipient-name" class="ml-4 mt-4">Deseja realmente eliminar o item? <br>
-                                       <span class="text-danger">OBS: Se eliminar o administrador poderá perder todos registos associado a ele.</span></label>
+                                <span class="text-danger">OBS: Se eliminar o administrador poderá perder todos registos associado a ele.</span></label>
                             </div>
 
                             <div class="modal-footer">

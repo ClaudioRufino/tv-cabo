@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('ano');
             $table->double('valor');
             $table->string('data_pagamento');
+            $table->string('atendido_por');
 
-            $table->foreignId('user_id')->constrained('users'); /* Chave Estrangeira */
             $table->foreignId('cliente_id')->constrained('clientes'); /* Chave Estrangeira */
             
             $table->timestamps();

@@ -14,8 +14,8 @@ class Pagamento extends Model
         'ano',
         'valor',
         'data_pagamento',
-        
-        'user_id',  /* Chave Estrangeira */
+        'atendido_por',  /* Incluir simplesmente o nome do Administrador que atendeu o cliente */
+
         'cliente_id' /* Chave Estrangeira */
     ];
 

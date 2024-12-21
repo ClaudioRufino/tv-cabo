@@ -19,8 +19,8 @@
                   float:right;
                   margin-top:22px;
                   height:50px;
-                  margin-left:4px;
-            ">
+                  margin-left:4px; ">
+
           <button class="btn btn-primary"><i class="fe fe-plus"></i></button>
       </form>
       <div class="card shadow">
@@ -29,7 +29,7 @@
           <table class="table table-hover table-borderless border-v">
             <thead class="thead-dark">
               <tr>
-                <th class="bg-primary">Código</th>
+                <th class="bg-primary">Id</th>
                 <th class="bg-primary text-left">Nome</th>
                 <th class="bg-primary">Contacto</th>
                 <th class="bg-primary">Data de Vencimento</th>

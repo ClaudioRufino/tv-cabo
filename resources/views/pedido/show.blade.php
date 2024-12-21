@@ -72,7 +72,7 @@
         <hr class="my-4">
           
       </form>
-    </div> <!-- /.card-body -->
-  </div> <!-- /.col-12 -->
+    </div>
+  </div>
 
 @endsection

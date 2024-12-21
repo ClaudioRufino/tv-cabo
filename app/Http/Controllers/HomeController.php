@@ -20,6 +20,8 @@ use Sabberworm\CSS\Value\Size;
 use function Laravel\Prompts\alert;
 use function PHPUnit\Framework\isEmpty;
 
+use Carbon\Carbon;
+
 class HomeController extends Controller
 {
 
@@ -327,19 +329,48 @@ class HomeController extends Controller
 
         /* Verifique se há clientes a serem pagos e consequentemente serem notificados também */
         if(count($clientes_a_pagarem) > 0){
+
             for ($i=0; $i < count($clientes_a_pagarem); $i++) { 
-                Notificacao::create([
-                    'data'=> date('Y-m-d'),
-                    'estado' => 1,
-                    'assunto' => 'cliente',
-                    'descricao' => 'Dia do pagamento do cliente',
-                    'cliente_id' => $clientes_a_pagarem[$i]->cliente_id
-                ]);
+                
+                $clienteNovo = $this->cadastradoHoje($clientes_a_pagarem[$i]);
+
+                if($clienteNovo){
+                    Notificacao::create([
+                        'data'=> date('Y-m-d'),
+                        'estado' => 1,
+                        'assunto' => 'cliente',
+                        'descricao' => 'Dia do pagamento do cliente',
+                        'cliente_id' => $clientes_a_pagarem[$i]->cliente_id
+                    ]);
+                }
+
             }
         }
     }
 
     public function definicao(){
         return view('definicao');
+    }
+
+    public function cadastradoHoje($cliente){
+
+        
+        $ficha = DB::table('ficha__contratos as f')
+        ->select(DB::raw('f.data_contrato'))
+        ->where('f.cliente_id', $cliente->cliente_id)
+        ->first();
+
+        $data_contrato = $ficha->data_contrato;
+
+        $dataCarbon = Carbon::parse($data_contrato);
+
+        $mesCadastro = $dataCarbon->format('m');
+        $anoCadastro = $dataCarbon->format('Y');
+        if($mesCadastro == date('m') && $anoCadastro == date('Y')){
+            return false;
+        }
+        else{
+                return true;
+        }
     }
 }

@@ -10,7 +10,7 @@
         background-color: #ddd;
       }
       main{
-        width: 60%;
+        width: 100%;
         height: 50vh;
         margin: 0 auto;
       }
@@ -33,8 +33,13 @@
       .letra{
         font-family: Arial, Helvetica, sans-serif;
         font-size: 10pt;
-        margin-left: 10px;
         color:#666;
+      }
+      span{
+          margin-left: 10px;
+      }
+      li{
+        font-family: monospace;
       }
      
   </style>
@@ -51,15 +56,16 @@
       <div class="card-body">
 
           <ul>
-            <li>Id - </li>
-            <li>Nome - </li>
-            <li>Rua - </li>
-            <li>Linha - </li>
-            <li>Contacto - </li>
-            <li>Dia de Pagamento - </li>
-            <li>Data do Contrato - </li>
+            <li>Id - {{$dados->id}}</li>
+            <li>Linha - {{$dados->linha}}</li>
+            <li>Contacto - {{$dados->contacto}}</li>
+            <li>Rua - {{$dados->rua}}</li>
+            <li>Nome - {{$dados->nome}}</li>
+            <li>Dia de Pagamento - {{$dados->dia_pagamento}}</li>
+            <li>Data do Contrato - {{$dados->data_contrato}}</li>
             <br>
-            <li class="letra">Observação - Esta ficha de inscrição contém informações valiosas e relevantes para fins de atestar a tua condição de cliente. Guarde em um lugar seguro.</li>
+            <li> Observação <nav class="letra">Esta ficha de inscrição contém informações valiosas e relevantes para fins de atestar a tua condição de cliente. Guarde em um lugar seguro.</nav>
+            </li>
           </ul>
       <div>
 

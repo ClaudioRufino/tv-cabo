@@ -63,7 +63,7 @@
           <div class="mt-2">
             <a class="btn btn-lg btn-success btn-block text-light" href="{{route('admin.create')}}">Registar</a>
           </div>
-          <p class="mt-5 mb-3 text-muted">© {{date("Y")}}</p>
+          <p class="mt-5 mb-3 text-muted"> © {{date("Y")}}, TVCJ Todos direitos reservados</p>
 
         </form>
 

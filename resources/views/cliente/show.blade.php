@@ -176,7 +176,7 @@
 
           <td><span class="dot dot-lg bg-success mr-2"></span>Pago</td>
           <td>
-            {{App\Models\User::find($pagamento->user_id)->name}}
+            {{$pagamento->atendido_por}}
           </td>
           <td>
             <div class="dropdown">
@@ -215,8 +215,6 @@
 
         var input_id = form.querySelector('.pagamento_id');
         pagamento_id = Number(input_id.value);
-
-        // alert(pagamento_id);
 
         linha =  input_id.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
         linha_index = input_id.parentNode.parentNode.parentNode.parentNode.rowIndex; 

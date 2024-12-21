@@ -71,7 +71,7 @@ class MultaController extends Controller
             'cliente_id' => $request->cliente_id
         ]);
 
-        return "Adicionado com sucesso";
+        return redirect()->route('multa.index');;
 
     }
 

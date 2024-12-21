@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Cliente;
 use App\Models\Divida;
 use App\Models\Pagamento;
@@ -41,12 +42,16 @@ class PagamentoController extends Controller
     public function store(Request $request)
     {
         //Armazenamento do Pagamento
+        $id_admin = Auth::id();
+        $admin = User::find($id_admin);
+        $nome_admin = $admin->name;
+
         $pagamento = Pagamento::create(
             [
                 'mes' => $request->mes,
                 'ano' => $request->ano,
                 'valor' => $request->valor,
-                'user_id' => Auth::id(),
+                'atendido_por' => $nome_admin,
                 'data_pagamento' => date('Y-m-d'),
                 'cliente_id'=>$request->cliente_id,
             ]);

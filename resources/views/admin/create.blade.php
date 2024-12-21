@@ -66,7 +66,7 @@
 
                 <div class="form-group mb-1">
                     <label for="c_senha">Senha do Admin Principal</label>
-                    <input type="password" class="form-control" id="a_senha" name="a_senha" required>
+                    <input type="password" class="form-control" id="a_senha" name="a_senha">
                     <span id="a_senha_mensagem" class="error-message"></span>
                 </div>
 
@@ -204,29 +204,29 @@ file.addEventListener('change', (e)=>{
 
 /* VALIDAÇÃO DA SENHA DO ADMINISTRADOR*/
 
-const a_senha = document.getElementById('a_senha');
-const a_senha_mensagem = document.getElementById('a_senha_mensagem');
+// const a_senha = document.getElementById('a_senha');
+// const a_senha_mensagem = document.getElementById('a_senha_mensagem');
 
-a_senha.addEventListener('blur', function() {
-    if(a_senha.value != ''){
-    const valor = senhaAdmin(a_senha.value);
-          valor.then(
-            valor=>
-            {
-                if(valor.senha != true){
-                    a_senha.value = '';
-                    btn_cadastrar.disabled = true;
-                    a_senha_mensagem.innerHTML = 'Senha do Administrador Errada';
-                }
-                else{
-                    btn_cadastrar.disabled = false;
-                    a_senha_mensagem.innerHTML = '';
-                } 
+// a_senha.addEventListener('blur', function() {
+//     if(a_senha.value != ''){
+//     const valor = senhaAdmin(a_senha.value);
+//           valor.then(
+//             valor=>
+//             {
+//                 if(valor.senha != true){
+//                     a_senha.value = '';
+//                     btn_cadastrar.disabled = true;
+//                     a_senha_mensagem.innerHTML = 'Senha do Administrador Errada';
+//                 }
+//                 else{
+//                     btn_cadastrar.disabled = false;
+//                     a_senha_mensagem.innerHTML = '';
+//                 } 
                 
-            }
-          )
-        }
-});
+//             }
+//           )
+//         }
+// });
 
 
 

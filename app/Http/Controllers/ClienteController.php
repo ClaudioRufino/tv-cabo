@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cliente;
-use App\Models\Divida;
-use App\Models\Endereco;
-use App\Models\Ficha_Contrato;
+use App\Models\User;
 use App\Models\Linha;
 use App\Models\Multa;
+use App\Models\Divida;
+use App\Models\Cliente;
+use App\Models\Endereco;
 use App\Models\Pagamento;
 use Illuminate\Http\Request;
+use App\Models\Ficha_Contrato;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -36,14 +38,13 @@ class ClienteController extends Controller
     }
 
     public function pagina2(){
-        $clientes = Cliente::where('estado', '1')->get();
-        $novo = array();
-
-        for($i = 10; $i <= 13; $i++){
-            array_push($novo, $clientes[$i]); 
+        $id_admin = Auth::id();
+        $admin = User::find($id_admin);
+        if($admin){
+            $nome_admin = $admin->name;
+            return "Nome: $nome_admin";
         }
-
-        return $novo;
+       return $teste;
 
     }
 
@@ -223,8 +224,6 @@ class ClienteController extends Controller
      */
     public function destroy(int $id)
     {
-
-        // return $id;
         // return $id;
         $cliente = Cliente::find($id);
         $cliente->estado = 0;

@@ -77,10 +77,13 @@
 
         <div class="col-md-8">
           <h3 class="h5 mt-4 mb-1">Sistema</h3>
-          <p class="text-muted mb-4">Perguntas importantes respondidas</p>
+          <p class="">Perguntas importantes respondidas</p>
+        
+          <hr class="mb-4">
+
           <ul class="list-unstyled">
 
-            <li class="my-1 bg-primary text-light">
+            <li class="my-1 bg-primary text-light p-2">
               <i class="fe fe-arrow-right mr-2 text-muted"></i>
               Como funciona a categoria de Administrador?
             </li>
@@ -92,7 +95,7 @@
 
             <br>
 
-            <li class="my-1 bg-primary text-light">
+            <li class="my-1 bg-primary text-light p-2">
               <i class="fe fe-arrow-right mr-2 text-muted"></i>
               O que é o dia crítico do sistema?
             </li>
@@ -103,13 +106,13 @@
 
             <br>
 
-            <li class="my-1 bg-primary text-light">
+            <li class="my-1 bg-primary text-light p-2">
               <i class="fe fe-arrow-right mr-2 text-muted"></i>
               O que acontece se um cliente for eliminado?
             </li>
             
             <li class="my-1">
-              R: Se um cliente for eliminado, ele não é apagado permanentemente do sistema, ele é simplesmente colocado num estado de inatividade. Seus registos precisam estar no sistema por questão de estatísticas e relatórios, bem como poder restaurá-lo caso ele decide voltar a usar os serviços da empresa.
+              R: Se um cliente for eliminado, ele não é apagado permanentemente do sistema, ele é simplesmente colocado num estado de inatividade. Seus registos precisam estar no sistema por questão de conformidade, bem como poder restaurá-lo caso ele decide voltar a usar os serviços da empresa.
             </li>
 
           </ul>

@@ -108,7 +108,7 @@ class ClienteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(int $id)
+    public function show($id)
     {
         $cliente = Cliente::find($id);
 

@@ -76,17 +76,18 @@ class NotificacaoController extends Controller
 
     public function existeNotificacao(){
 
-        $clientes = DB::table('clientes as c')
-        ->join('notificacaos as n', 'c.id', '=', 'n.cliente_id')
-        ->select(DB::raw('c.id, c.nome, c.contacto, n.data'))
-        ->where('n.data', '=', date('Y-m-d'))
-        ->where('c.estado', 1)
-        ->get();
+        // $clientes = DB::table('clientes as c')
+        // ->join('notificacaos as n', 'c.id', '=', 'n.cliente_id')
+        // ->select(DB::raw('c.id, c.nome, c.contacto, n.data'))
+        // ->where('n.data', '=', date('Y-m-d'))
+        // ->where('c.estado', 1)
+        // ->get();
 
-        if(count($clientes) != 0){
-             return response()->json(['existe' => true]);
-        } else {
-             return response()->json(['existe' => false]);
-        }
+        // if(count($clientes) != 0){
+             return response()->json(true);
+            //  return response()->json(['existe' => true]);
+        // } else {
+            //  return response()->json(['existe' => false]);
+        // }
     }
 }

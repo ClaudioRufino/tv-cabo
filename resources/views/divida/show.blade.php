@@ -6,20 +6,21 @@
         <div class="row my-4">
             <!-- Small table -->
             <div class="col-md-12">
-                <h4 class="page-title text-center">Dívidas</h4>
+                <h4 class="page-title text-center">Dívidas do Cliente</h4>
+                <p class="mb-3 text-center">A tabela abaixo apresenta a lista geral de todos as dívidas do cliente</p>
                 <div class="card shadow">
                     <div class="card-body">
                     <!-- table -->
-                    <table class="table datatables" id="dataTable-1">
+                    <table class="table table-hover table-borderless border-v">
                     <thead>
                         <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Ano</th>
-                        <th>Mes</th>
-                        <th>Valor</th>
-                        <th class="text-center">Estado</th>
-                        <th>Acção</th>
+                        <th class="bg-primary">ID</th>
+                        <th class="bg-primary">Nome</th>
+                        <th class="bg-primary">Ano</th>
+                        <th class="bg-primary">Mes</th>
+                        <th class="bg-primary">Valor</th>
+                        <th class="text-center bg-primary">Estado</th>
+                        <th class="bg-primary">Acção</th>
                         </tr>
                     </thead>
                     <tbody>

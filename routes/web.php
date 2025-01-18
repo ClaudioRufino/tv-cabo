@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClienteAPIController; // Testando apenas
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgenciaController;
@@ -79,14 +80,6 @@ Route::get('/', function(){
 
 Route::get('/clienteAtivar/{id}', [ClienteController::class, 'ativar'])->name('cliente.ativar');
 
-// Route::get('teste', function(){
-//     return view('paginacao');
-// });
-
-// Route::get('page1', function(){
-//     return view('paginacao');
-// })->name('page1');
-
 Route::get('/page2', [ClienteController::class, 'pagina2']);
 
 Route::get('page3', function(){
@@ -98,7 +91,6 @@ Route::get('page3', function(){
 Route::get('teste', function(){
     return view('teste');
 })->name('teste');
-
 
 
 

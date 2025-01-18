@@ -42,7 +42,6 @@
           <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
             <span class="fe fe-bell fe-16"></span>
             <span id="ponto_notificacao"></span>
-            {{-- class="dot dot-md bg-success" --}}
           </a>
         </li>
 
@@ -219,32 +218,33 @@
         if( /^[0-9]+$/.test(cliente)){ // Expressão regular para definir só valores numéricos
             
             const valor = existeCliente(cliente); /* Verifique se o valor digitado é id de um cliente do sistema*/
+                valor.then(
 
-            valor.then(
-                  valor=>{
+                    valor=>{
 
-                    switch (valor.existe) {
-                      case 0:
-                            pesquisa_info = document.getElementById('pesquisa_mensagem');
-                            pesquisa_info.innerHTML = "Cliente Inativo!";
-                      break;
+                        const resposta = valor.existe; // Pega o valor obtido da requisição
+                        switch (resposta) {
+                        case 0:
+                                pesquisa_info = document.getElementById('pesquisa_mensagem');
+                                pesquisa_info.innerHTML = "Cliente Inativo!";
+                        break;
 
-                      case 1:
-                          var actionUrl = "{{ route('cliente.show', ['cliente'=>'0'])}}"+cliente;
-                          this.action = actionUrl; // Definir manualmente o atributo action do formulário
-                          this.submit(); //Submeter id para pesquisa
-                      break;
+                        case 1:
+                            var actionUrl = "http://127.0.0.1:8000/cliente/" + cliente;
+                            window.location.href = actionUrl;
+                        break;
 
-                      case 2:
-                            pesquisa_info = document.getElementById('pesquisa_mensagem');
-                            pesquisa_info.innerHTML = "Cliente não existente!";
-                      break;
-                    
+                        case 2:
+                                pesquisa_info = document.getElementById('pesquisa_mensagem');
+                                pesquisa_info.innerHTML = "Cliente não existente!";
+                        break;
+                        
+                        }
+                        
                     }
-                      
-                  }
-            );
-        }
+                );
+            }
+        
         else{
               pesquisa_info = document.getElementById('pesquisa_mensagem');
               pesquisa_info.innerHTML = "Só é permitido valor numérico!";
@@ -254,19 +254,20 @@
     async function existeCliente (id){
 
         try{
-            var mgs = 'Erro ao acessar o Banco de dados';
-            const resposta = await fetch('http://localhost:8000/api/cliente/'+ id,
-            {
-                method:'get',
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-            const clientes = await resposta.json();
-            return clientes;
+            const response = await fetch('http://localhost:8000/api/cliente/'+ id);
+            if (response.ok) {
+                const cliente = await response.json();
+                return cliente;
+            } else {
+                console.error('Erro ao buscar cliente:', response.statusText);
+            }
+
+            
         }catch(e){
-            console.log(mgs);
+            console.log("Erro:" + e);
         }
+
+       
 
     }
 

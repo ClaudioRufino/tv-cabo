@@ -18,35 +18,31 @@
     /* Verificando se há Clientes pagando hoje */
     ponto_notificacao = document.getElementById('ponto_notificacao');
 
-    // alert("Ola mundo");
-    
-    
+    // const not = notificacao();
+        
 
-    const valor = notificacao();
+        //   valor.then(
+        //       valor =>{
+        //         console.log(valor)
+        //           if(valor.existe === true){ // Verifique há clientes pagando hoje
+        //             // dot dot-md bg-success
+        //             ponto_notificacao.classList.add("dot", "dot-md", "bg-success");
 
-          valor.then(
-              valor =>{
-
-                  if(valor.existe === true){ // Verifique há clientes pagando hoje
-                    // dot dot-md bg-success
-                    ponto_notificacao.classList.add("dot", "dot-md", "bg-success");
-
-                  }
-                  else{
-                        // alert("Não existem clientes");
-                        ponto_notificacao.classList.add("x");
-                  }
-          });
+        //           }
+        //           else{
+        //                 ponto_notificacao.classList.add("x");
+        //           }
+        //   });
 
     async function notificacao(){
         
         try{
-            var mgs = 'Erro ao acessar o Banco de dados';
-            const resposta = await fetch('http://localhost:8000/api/notificacao')
-            const notificacao = await resposta.json();
-            return notificacao;
+            const resposta = await fetch('http://localhost:8000/api/notificacao');
+            // const notification = await resposta.json();
+            console.log("Ola mundo");
+            // return notificacao;
         }catch(e){
-            console.log(mgs);
+            console.log("Erro:");
         }
       }
     

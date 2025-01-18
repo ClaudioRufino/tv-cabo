@@ -88,8 +88,8 @@
 
                     </div>
                   </div>
-                </div> <!-- simple table -->
-              </div> <!-- end section -->
+                </div>
+              </div>
         </div>
 
 <script>

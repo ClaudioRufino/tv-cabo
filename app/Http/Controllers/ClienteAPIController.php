@@ -217,4 +217,8 @@ class ClienteAPIController extends Controller
         // $cliente->save();
         return response()->json(['estado' => 1]);
     }
+
+    public function teste(){
+        return response()->json('Sucesso!');
+    }
 }

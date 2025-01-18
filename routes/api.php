@@ -27,7 +27,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 /* END-POINTS DO SISTEMA TV-CABO para acessar Clientes */
 Route::get('/clientes', [ClienteAPIController::class, 'index']);
 Route::post('/clientes', [ClienteAPIController::class, 'store']);
-Route::get('/cliente/{id}', [ClienteAPIController::class, 'show']);
+
+Route::middleware('throttle:100,1')->get('/cliente/{id}', [ClienteAPIController::class, 'show']);
+
+
 Route::get('/clienteInativo/{id}', [ClienteAPIController::class, 'showInativo']);
 Route::put('/clientes/{id}', [ClienteAPIController::class, 'update']);
 Route::delete('/clientes/{id}', [ClienteAPIController::class, 'destroy']);
@@ -59,4 +62,8 @@ Route::delete('/users/{id}', [UserAPIController::class, 'destroy']);
 
 // Testando Paginator
 Route::get('/clientesPage/{numPage}', [ClienteAPIController::class, 'page']);
+
+
+
+Route::get('/teste', [ClienteAPIController::class, 'teste']);
 

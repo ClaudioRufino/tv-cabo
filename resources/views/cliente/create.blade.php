@@ -4,167 +4,173 @@
 @section('conteudo')
 
 <div class="col-12 col-xl-10">
-    <div class="row align-items-center my-4">
-      <div class="col">
-        <h2 class="h3 mb-0 page-title">Novo Cliente</h2>
-      </div>
-      <form action="{{route('cliente.store')}}" method="POST">
+    <form action="{{route('cliente.store')}}" method="POST">
         @csrf
-      <div class="col-auto">
-        <button type="submit" class="btn btn-primary" id="btn_cadastrar">Cadastrar Cliente</button>
-      </div>
-    </div>
+
+        <div class="row my-4">
+            <div class="col d-flex">
+                <div class="ml-auto">
+                    <h2 class="h3 mb-0 page-title text-primary">Novo Cliente</h2>
+                </div>
+            </div>
+        </div>
     
-      <hr class="my-4">
-      <h5 class="mb-2 mt-4">Dados Pessoais</h5>
-      <p class="mb-4">Cadastre de forma rápida e simples os clientes da TVCJ</p>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="firstname">Nome Completo</label>
-          <input type="text" id="nome" class="form-control" name="nome" required>
-              <span id="nome_mensagem" class="error-message"></span>
-            <br>
+        <hr class="my-4">
+        <h3 class="mb-2 mt-4 lead">DADOS PESSOAIS</h3>
+        <h5 class="mb-4 lead">Cadastre de forma rápida e simples os clientes da TVCJ</h5>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+            <label for="firstname">Nome Completo</label>
+            <input type="text" id="nome" class="form-control" name="nome" required>
+                <span id="nome_mensagem" class="error-message"></span>
+                <br>
+            </div>
+            <div class="form-group col-md-6">
+            <label for="lastname">Linha</label>
+            <input type="text" id="linha" class="form-control" name="linha" required>
+                <span id="linha_mensagem" class="error-message"></span>
+                <br>
+            </div>
         </div>
-        <div class="form-group col-md-6">
-          <label for="lastname">Linha</label>
-          <input type="text" id="linha" class="form-control" name="linha" required>
-              <span id="linha_mensagem" class="error-message"></span>
-              <br>
+        <div class="form-row">
+            <div class="form-group col-md-8">
+            <label for="descricao">Descrição da Rua</label>
+            <input type="text" class="form-control" id="descricao" name="descricao" required>
+            </div>
+            <div class="form-group col-md-4">
+            <label for="inputPhone">Contacto</label>
+            <input type="text" class="form-control" id="contacto" name="contacto" required>
+                <span id="contacto_mensagem" class="error-message"></span>
+                <br>
+            </div>
         </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-8">
-          <label for="descricao">Descrição da Rua</label>
-          <input type="text" class="form-control" id="descricao" name="descricao" required>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+            <label for="custom-placeholder">Data do contrato</label>
+            <input class="form-control input-placeholde" id="custom-placeholder" type="date" name="data_contrato" value="{{date('Y-m-d')}}" readonly>
+            </div>
+            <div class="form-group col-md-4">
+            <label for="inputState5">Género</label>
+            <select id="inputState5" class="form-control" name="genero">
+                <option value="Feminino">Feminino</option>
+                <option value="Masculino">Masculino</option>
+            </select>
+            </div>
+            <div class="form-group col-md-4">
+            <label for="inputLang">Número da casa</label>
+            <select id="num_casa" class="form-control" name="num_casa">
+                @for ($i = 1; $i <= 500; $i++)
+                    <option value="{{$i}}">{{$i}}</option>
+                @endfor
+            </select>
+            <span id="casa_mensagem" class="error-message"></span>
+            </div>
         </div>
-        <div class="form-group col-md-4">
-          <label for="inputPhone">Contacto</label>
-          <input type="text" class="form-control" id="contacto" name="contacto" required>
-              <span id="contacto_mensagem" class="error-message"></span>
-              <br>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="custom-placeholder">Data do contrato</label>
-          <input class="form-control input-placeholde" id="custom-placeholder" type="date" name="data_contrato" value="{{date('Y-m-d')}}" required>
-        </div>
-        <div class="form-group col-md-4">
-          <label for="inputState5">Género</label>
-          <select id="inputState5" class="form-control" name="genero">
-            <option value="Feminino">Feminino</option>
-            <option value="Masculino">Masculino</option>
-          </select>
-        </div>
-        <div class="form-group col-md-4">
-          <label for="inputLang">Número da casa</label>
-          <select id="num_casa" class="form-control" name="num_casa">
-            @for ($i = 1; $i <= 500; $i++)
-                <option value="{{$i}}">{{$i}}</option>
-            @endfor
-          </select>
-          <span id="casa_mensagem" class="error-message"></span>
-        </div>
-      </div>
-      <hr class="my-4">
-      <h5 class="mb-2 mt-4">Avatar</h5>
-      <p class="mb-4">Escolhe um avatar para representar a tua pessoa digital</p>
+        <hr class="my-4">
+        <h5 class="mb-2 mt-4">Avatar</h5>
+        <p class="mb-4">Escolhe um avatar para representar a tua pessoa digital</p>
 
-      <div class="card-deck mb-4">
-        <div class="card border-0 bg-transparent">
-          <img src="{{url('light/assets/avatars/avatar-1.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-1">
-          <span id="span_avatar-1">
-              <i class="fe fe-check fe-20 text-success" id="sucesso"></i>
-          </span>  
-        </div>
+        <div class="card-deck mb-4">
+            <div class="card border-0 bg-transparent">
+            <img src="{{url('light/assets/avatars/avatar-1.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-1">
+            <span id="span_avatar-1">
+                <i class="fe fe-check fe-20 text-success" id="sucesso"></i>
+            </span>  
+            </div>
 
-        <div class="card border-0 bg-transparent">
-          <img src="{{url('light/assets/avatars/avatar-2.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-2">
-          <span id="span_avatar-2">
-          </span> 
+            <div class="card border-0 bg-transparent">
+            <img src="{{url('light/assets/avatars/avatar-2.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-2">
+            <span id="span_avatar-2">
+            </span> 
+            </div> 
+
+            <div class="card border-0 bg-transparent">
+            <img src="{{url('light/assets/avatars/avatar-3.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-3">
+            <span id="span_avatar-3">
+            </span>
+            </div>
+
+            <div class="card border-0 bg-transparent">
+            <img src="{{url('light/assets/avatars/avatar-4.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-4">
+            <span id="span_avatar-4">
+            </span>
+            </div>
+
+            <div class="card border-0 bg-transparent">
+            <img src="{{url('light/assets/avatars/avatar-5.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-5">
+            <span id="span_avatar-5">
+            </span>
+            </div>
+
+            <div class="card border-0 bg-transparent">
+            <img src="{{url('light/assets/avatars/avatar-6.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-6">
+            <span id="span_avatar-6">
+            </span>
+            </div>
+
+            <div class="card border-0 bg-transparent">
+            <img src="{{url('light/assets/avatars/avatar-7.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-7">
+            <span id="span_avatar-7">
+            </span>
+            </div>
+
         </div> 
 
-        <div class="card border-0 bg-transparent">
-          <img src="{{url('light/assets/avatars/avatar-3.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-3">
-          <span id="span_avatar-3">
-          </span>
+        <div class="card-deck mb-4">
+
+            <div class="card border-0 bg-transparent">
+            <img src="{{url('light/assets/avatars/avatar-8.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-8">
+            <span id="span_avatar-8">
+            </span>
+            </div>
+
+            <div class="card border-0 bg-transparent">
+            <img src="{{url('light/assets/avatars/avatar-9.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-9">
+            <span id="span_avatar-9">
+            </span>
+            </div>
+
+            <div class="card border-0 bg-transparent">
+            <img src="{{url('light/assets/avatars/avatar-10.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-10">
+            <span id="span_avatar-10">
+            </span>
+            </div>
+
+            <div class="card border-0 bg-transparent">
+            <img src="{{url('light/assets/avatars/avatar-11.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-11">
+            <span id="span_avatar-11">
+            </span>
+            </div> 
+
+            <div class="card border-0 bg-transparent">
+            <img src="{{url('light/assets/avatars/avatar-12.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-12">
+            <span id="span_avatar-12">
+            </span>
+            </div> 
+
+            <div class="card border-0 bg-transparent">
+            <img src="{{url('light/assets/avatars/avatar-13.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-13">
+            <span id="span_avatar-13">
+            </span>
+            </div> 
+
+            <div class="card border-0 bg-transparent">
+            <img src="{{url('light/assets/avatars/avatar-14.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-14">
+            <span id="span_avatar-14">
+            </span>
+            </div>
+
         </div>
+        
+        <hr class="my-4">
 
-        <div class="card border-0 bg-transparent">
-          <img src="{{url('light/assets/avatars/avatar-4.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-4">
-          <span id="span_avatar-4">
-          </span>
+        <input type="hidden" name="avatar" id="avatar" value="light/assets/avatars/avatar-1.PNG">
+
+        <div class="d-flex">
+            <div class="ml-auto">
+                <button type="submit" class="btn btn-primary" id="btn_cadastrar">Cadastrar Cliente</button>
+            </div>
         </div>
-
-        <div class="card border-0 bg-transparent">
-          <img src="{{url('light/assets/avatars/avatar-5.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-5">
-          <span id="span_avatar-5">
-          </span>
-        </div>
-
-        <div class="card border-0 bg-transparent">
-          <img src="{{url('light/assets/avatars/avatar-6.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-6">
-          <span id="span_avatar-6">
-          </span>
-        </div>
-
-        <div class="card border-0 bg-transparent">
-          <img src="{{url('light/assets/avatars/avatar-7.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-7">
-          <span id="span_avatar-7">
-          </span>
-        </div>
-
-      </div> 
-
-      <div class="card-deck mb-4">
-
-        <div class="card border-0 bg-transparent">
-          <img src="{{url('light/assets/avatars/avatar-8.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-8">
-          <span id="span_avatar-8">
-          </span>
-        </div>
-
-        <div class="card border-0 bg-transparent">
-          <img src="{{url('light/assets/avatars/avatar-9.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-9">
-          <span id="span_avatar-9">
-          </span>
-        </div>
-
-        <div class="card border-0 bg-transparent">
-          <img src="{{url('light/assets/avatars/avatar-10.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-10">
-          <span id="span_avatar-10">
-          </span>
-        </div>
-
-        <div class="card border-0 bg-transparent">
-          <img src="{{url('light/assets/avatars/avatar-11.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-11">
-          <span id="span_avatar-11">
-          </span>
-        </div> 
-
-        <div class="card border-0 bg-transparent">
-          <img src="{{url('light/assets/avatars/avatar-12.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-12">
-          <span id="span_avatar-12">
-          </span>
-        </div> 
-
-        <div class="card border-0 bg-transparent">
-          <img src="{{url('light/assets/avatars/avatar-13.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-13">
-          <span id="span_avatar-13">
-          </span>
-        </div> 
-
-        <div class="card border-0 bg-transparent">
-          <img src="{{url('light/assets/avatars/avatar-14.PNG')}}" alt="..." class="card-img-top img-fluid rounded" id="avatar-14">
-          <span id="span_avatar-14">
-          </span>
-        </div>
-
-      </div>
-      
-      <hr class="my-4">
-
-      <input type="hidden" name="avatar" id="avatar" value="light/assets/avatars/avatar-1.PNG">
 
     </form>
 

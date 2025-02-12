@@ -61,9 +61,9 @@
           <button class="btn btn-lg btn-primary btn-block mt-4" type="submit">Entrar</button>
 
           <div class="mt-2">
-            <a class="btn btn-lg btn-success btn-block text-light" href="{{route('admin.create')}}">Registar</a>
+            <a class="btn btn-lg btn-dark btn-block text-light" href="{{route('admin.create')}}">Registar</a>
           </div>
-          <p class="mt-5 mb-3 text-muted"> © {{date("Y")}}, TVCJ Todos direitos reservados</p>
+          <p class="mt-5 mb-3 text-muted">Todos direitos reservados © {{date("Y")}}</p>
 
         </form>
 

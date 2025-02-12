@@ -4,12 +4,11 @@
 
 @section('conteudo')
 <div style="width:100%">
-  {{-- border: 1px solid #ddd; --}}
     <div class="row">
         <div class="col-md-6 mb-4">
           <div class="card shadow">
-            <div class="card-header">
-              <strong class="card-title mb-0">Crescimento Anual - <b>{{date('Y')}}</b></strong>
+            <div class="card-header bg-primary">
+              <strong class="card-title mb-0 text-light">Crescimento Anual - <b>{{date('Y')}}</b></strong>
               <div class="dropdown float-right">
               </div>
             </div>
@@ -36,8 +35,8 @@
 
         <div class="col-md-6 mb-4">
             <div class="card shadow">
-              <div class="card-header">
-                <strong class="card-title mb-0">Dados de Clientes</strong>
+              <div class="card-header bg-primary">
+                <strong class="card-title mb-0 text-light">Dados de Clientes</strong>
               </div>
               <div class="card-body">
                 <canvas id="pieChartjs" width="400" height="300"></canvas>

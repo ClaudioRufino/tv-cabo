@@ -5,7 +5,7 @@
 
 @section('conteudo')
 
-<div class="col-12 col-xl-10">
+<div class="col-12 col-md-10" style="background:">
     <div class="row align-items-center my-4">
         <div class="col">
           <h4 class="h3 mb-0 page-title">Cadastrar Administrador</h4>
@@ -72,8 +72,8 @@
 
                 <div class="form-group">
                     <div class="card shadow mb-4">
-                        <div class="card-header">
-                            <strong>Carregamento de foto</strong>
+                        <div class="card-header bg-primary">
+                            <strong class="text-light">Carregamento de foto</strong>
                         </div>
                         <input type="file" class="form-control" name="foto" id="foto">
                         <span id="file_mensagem" class="error-message"></span>
@@ -151,6 +151,8 @@ const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const email = document.getElementById('email');
 const email_mgs = document.getElementById('email_mensagem');
 
+ btn_cadastrar.disabled = true;
+
 email.addEventListener('blur', (e)=>{
 
     /* 1- Verifique se está no formato de email */
@@ -162,11 +164,9 @@ email.addEventListener('blur', (e)=>{
                 if(valor.existe === true){ // Verifique se o email já existe no banco de dados
                     email_mgs.innerHTML = "Email já existe!";
                     email.value = "";
-                    btn_cadastrar.disabled = true;
                 }
                 else{
                     email_mgs.innerHTML = "";
-                    btn_cadastrar.disabled = false;
                 }
         })
     }
@@ -204,48 +204,29 @@ file.addEventListener('change', (e)=>{
 
 /* VALIDAÇÃO DA SENHA DO ADMINISTRADOR*/
 
-// const a_senha = document.getElementById('a_senha');
-// const a_senha_mensagem = document.getElementById('a_senha_mensagem');
+const a_senha = document.getElementById('a_senha');
+const a_senha_mensagem = document.getElementById('a_senha_mensagem');
 
-// a_senha.addEventListener('blur', function() {
-//     if(a_senha.value != ''){
-//     const valor = senhaAdmin(a_senha.value);
-//           valor.then(
-//             valor=>
-//             {
-//                 if(valor.senha != true){
-//                     a_senha.value = '';
-//                     btn_cadastrar.disabled = true;
-//                     a_senha_mensagem.innerHTML = 'Senha do Administrador Errada';
-//                 }
-//                 else{
-//                     btn_cadastrar.disabled = false;
-//                     a_senha_mensagem.innerHTML = '';
-//                 } 
+a_senha.addEventListener('blur', function() {
+    if(a_senha.value != ''){
+    const valor = senhaAdmin(a_senha.value);
+          valor.then(
+            valor=>
+            {
+                if(valor.senha != true){
+                    a_senha.value = '';
+                    btn_cadastrar.disabled = true;
+                    a_senha_mensagem.innerHTML = 'Senha do Administrador Errada';
+                }
+                else{
+                    btn_cadastrar.disabled = false;
+                    a_senha_mensagem.innerHTML = '';
+                } 
                 
-//             }
-//           )
-//         }
-// });
-
-
-
-async function existeCampo(campo, valor){
-    try{
-        var mgs = 'Erro ao acessar o Banco de dados';
-        const resposta = await fetch('http://localhost:8000/api/procurar/'+ campo + "/" + valor,
-        {
-            method:'get',
-            headers: {
-                'Accept': 'application/json'
             }
-        });
-        const usuarios = await resposta.json();
-        return usuarios;
-    }catch(e){
-        console.log(mgs);
-    }
-}
+          )
+        }
+});
 
 async function senhaAdmin(senha){
     try{
@@ -265,6 +246,25 @@ async function senhaAdmin(senha){
         console.log(mgs);
     }
 }
+
+
+async function existeCampo(campo, valor){
+    try{
+        var mgs = 'Erro ao acessar o Banco de dados';
+        const resposta = await fetch('http://localhost:8000/api/procurar/'+ campo + "/" + valor,
+        {
+            method:'get',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        const usuarios = await resposta.json();
+        return usuarios;
+    }catch(e){
+        console.log(mgs);
+    }
+}
+
 
 
 

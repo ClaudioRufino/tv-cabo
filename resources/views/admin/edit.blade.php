@@ -200,6 +200,8 @@ file.addEventListener('change', (e)=>{
 const a_senha = document.getElementById('a_senha');
 const a_senha_mensagem = document.getElementById('a_senha_mensagem');
 
+btn_atualizar.disabled = true;
+
 a_senha.addEventListener('blur', function() {
     if(a_senha.value != ''){
     const valor = senhaAdmin(a_senha.value);

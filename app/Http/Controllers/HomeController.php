@@ -316,7 +316,7 @@ class HomeController extends Controller
         $cliente = Multa::create([
             'valor'=> 500,
             'estado' => 1,
-            'descricao' => "Atraso de 10 dias depois do dia do pagamento do cliente!",
+            'descricao' => "Excedeu 10 dias do dia do pagamento!",
             'data_emissao' => date('Y-m-d'),
             'cliente_id' => $cliente->cliente_id
         ]);

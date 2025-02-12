@@ -84,13 +84,13 @@
           <ul class="list-unstyled">
 
             <li class="my-1 bg-primary text-light p-2">
-              <i class="fe fe-arrow-right mr-2 text-muted"></i>
+              <i class="fe fe-arrow-right mr-2 tex-light"></i>
               Como funciona a categoria de Administrador?
             </li>
 
             <li class="my-1">
-              R: Existe um administrador principal que tem como responsabilidade cadastrar
-              outros administradores. Nenhum outro Administrador terá esse poder, por questão de segurança.
+              Existe um administrador principal chamado administrador Master que tem como responsabilidade cadastrar
+               e eliminar outros administradores. Nenhum outro Administrador terá esse poder, por questão de segurança.
             </li>
 
             <br>

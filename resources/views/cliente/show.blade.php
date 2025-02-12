@@ -112,7 +112,7 @@
           <span class="h1 mb-0">{{$cliente->divida}}</span>
           <p class="text-muted">kz</p>
           <ul class="list-unstyled">
-            <li>As dívidas que foram contraídas</li>
+            <li>As dívidas que forem contraídas</li>
             <li>devem ser liquidadas</li>
             <li>num periódo pré-determinado para</li>
             <li>se evitarem multas</li>

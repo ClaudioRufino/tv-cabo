@@ -7,8 +7,8 @@
     <h2 class="page-title">Fazer Pagamento</h2>
     <p class="text-mute">Nesta seção poderá fazer o pagamento de multas dos clientes.</p>
     <div class="card shadow mb-4">
-      <div class="card-header">
-        <strong class="card-title">TVCJ - Multas</strong>
+      <div class="card-header bg-primary">
+        <strong class="card-title text-light">TVCJ - Multas</strong>
       </div>
       <div class="card-body" style="">
 
@@ -17,7 +17,7 @@
           @csrf
         <div class="row">
 
-          <div class="col-md-6">
+          <div class="col-md-6 p-4" style="border:1px solid #ddd; border-radius:10px;">
 
             <div class="form-group mb-3">
                 <label for="example-palaceholder">Código do Cliente</label>
@@ -54,16 +54,16 @@
               <input type="number" id="valor" class="form-control" name="valor" value="{{$valor}}">
             </div>
 
-            <button type="submit" class="btn mb-2 btn-primary btn-lg btn-block">Pagar Multa</button>
+            <button type="submit" class="btn mb-2 btn-primary">Pagar Multa</button>
 
           </div> 
 
-          <div class="col-md-6 text-center" style="border:1px solid #ddd; border-radius:50px;"> 
+          <div class="col-md-6 text-center"> 
               <img 
                   src="{{url('light/assets/images/payment.png')}}" 
                   id="img_pagamento" 
                   alt="imagem descrevendo pagamento de multa"
-                  style="width:90%; height:290px;border-radius:5px; margin-top:20px; margin-bottom:2px">
+                  style="width:70%; height:290px;border-radius:5px; margin-top:20px; margin-bottom:2px">
               <br>
               
           </div> 

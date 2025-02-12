@@ -11,7 +11,7 @@
                 <div class="card shadow">
                     <div class="card-body">
                     <!-- table -->
-                    <table class="table datatables" id="dataTable-1">
+                    <table class="table table-hover table-borderless border-v" id="dataTable-1">
                     <thead>
                         <tr>
                         <th class="bg-primary">ID</th>
@@ -51,8 +51,8 @@
                     </table>
                 </div>
                 </div>
-            </div> <!-- simple table -->
-            </div> <!-- end section -->
+            </div>
+            </div>
     </div>
 
 @endsection

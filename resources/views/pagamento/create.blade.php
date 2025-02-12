@@ -3,12 +3,12 @@
 
 @section('conteudo')
 
-<div class="col-12" style="border: 1px solid ble">
-    <h2 class="page-title">Fazer Pagamento</h2>
+<div class="col-12">
+    <h2 class="page-title">Realizar Pagamento</h2>
     <p class="text-muted">Nesta seção poderá fazer o pagamento mensais dos clientes.</p>
     <div class="card shadow mb-4">
-      <div class="card-header">
-        <strong class="card-title">TVCJ - Mensalidade </strong>
+      <div class="card-header bg-primary">
+        <strong class="card-title text-light">TVCJ - Mensalidade </strong>
       </div>
       <div class="card-body" style="">
 
@@ -16,7 +16,7 @@
           @csrf
         <div class="row">
 
-          <div class="col-md-6">
+          <div class="col-md-6 p-4" style="border:1px solid #ddd; border-radius:10px;">
 
             <div class="form-group mb-3">
                 <label for="example-palaceholder">Código do Cliente</label>
@@ -36,7 +36,7 @@
             <div class="form-group mb-3">
               <label for="simpleinput">Ano</label>
               <select class="form-control" id="ano" name="ano"> 
-                  @for ($i = 2024; $i <= 2030; $i++)
+                  @for ($i = 2025; $i <= 2030; $i++)
                       <option value="{{$i}}">{{$i}}</option>
                   @endfor
               </select>
@@ -73,11 +73,11 @@
                 <div class="alert alert-danger text-center" role="alert" id="mensagem" style="display: none"> </div>
             </div>
 
-            <button type="submit" class="btn mb-2 btn-info btn-lg btn-block">Efectuar pagamento</button>
+            <button type="submit" class="btn mb-2 btn-primary ">Fazer pagamento</button>
 
           </div> 
 
-          <div class="col-md-6 text-center" style="border:1px solid #ddd; border-radius:50px;"> 
+          <div class="col-md-6 text-center"> 
               <img 
                   src="{{url('light/assets/images/payment.png')}}" 
                   id="img_pagamento" 
@@ -117,7 +117,7 @@
                           dado =>{
                             
                                   if(dado.existe === true){ // Verifique se ano e mes já existem no banco de dados
-                                      mensagem.innerHTML = "Mes já Pago!"
+                                      mensagem.innerHTML = "Esse mes já está pago!"
                                       mensagem.style.display = "block";
                                       setTimeout(() => { mensagem.style.display = "none"; }, 2000);
                                   } 

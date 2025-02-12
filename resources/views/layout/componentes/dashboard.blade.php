@@ -68,7 +68,7 @@
             
             <li class="nav-item">
               <a class="nav-link pl-3" href="{{route('cliente.create')}}">
-                <span class="ml-1 item-text">Cadastrar</span>
+                <span class="ml-1 item-text">Cadastro</span>
               </a>
             </li>
             <li class="nav-item">

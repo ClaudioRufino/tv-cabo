@@ -2,7 +2,6 @@
 @section('title', 'Multas')
 
 
-
 @section('conteudo')
 
 <div class="col-12">
@@ -32,20 +31,17 @@
                 <th class="bg-primary">Id</th>
                 <th class="bg-primary text-left">Nome</th>
                 <th class="bg-primary">Contacto</th>
-                <th class="bg-primary">Data de Vencimento</th>
                 <th class="bg-primary">Valor</th>
                 <th class="bg-primary">Estado</th>
                 <th class="bg-primary">Acção</th>
               </tr>
             </thead>
             <tbody>
-
                 @foreach ($clientes as $cliente)
                     <tr class="accordion-toggle collapsed" id="c-2474" data-toggle="collapse" data-parent="#c-2474" href="#collap-2474">
                     <td>{{$cliente->id}}</td>
                     <td class="text-left">{{$cliente->nome}}</td>
                     <td>{{$cliente->contacto}}</td>
-                    <td class="text-center">0000-00-00</td>
                     <td>{{$cliente->multa}}</td>
                     <td><span class="badge badge-pill badge-danger mr-2">Não Pago</span><small class="text-muted"></small></td>
                     <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -57,7 +57,9 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item"  href="{{route('user.edit', $admin->id)}}">Editar</a>
                         <input type="hidden" name="id_admin" class="admin_id" value="{{ $admin->id }}">
-                        <button type="submit" class="btnEliminarAdmin dropdown-item" data-id="{{ $admin->id }}" data-toggle="modal" data-target="#modalEliminarAdmin">Apagar</button>
+                        @if ($admin->id != 1)
+                            <button type="submit" class="btnEliminarAdmin dropdown-item" data-id="{{ $admin->id }}" data-toggle="modal" data-target="#modalEliminarAdmin">Apagar</button>
+                        @endif
                     </div>
                     </td>
                 </tr>
@@ -74,8 +76,9 @@
                             </div>
 
                             <div class="form-group text-left">
-                                <label for="recipient-name" class="ml-4 mt-4">Deseja realmente eliminar o item? <br>
-                                <span class="text-danger">OBS: Se eliminar o administrador poderá perder todos registos associado a ele.</span></label>
+                                <label for="recipient-name" class="ml-4 mt-4">Precisa entrar com a senha do Administrador Master para eliminar<br>
+                                <input type="password" class="form-control mt-2 mb-0" id="admin_senha" name="admin_senha">
+                                <span id="admin_senha_mensagem" class="error-message"></span>
                             </div>
 
                             <div class="modal-footer">
@@ -83,7 +86,7 @@
                                 <form  id="modal-delete-form-admin" action="#" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                    <button type="submit" class="btn btn-danger mb-2">Eliminar</button>
+                                    <button type="submit" class="btn btn-danger mb-2" id="btn_eliminar_admin">Eliminar</button>
                                 </form>
                             </div>
                     </div>
@@ -111,6 +114,55 @@
                 deleteForm.action = `/user/${adminId}`;
             });
         });
+
+        /* VALIDAÇÃO DA SENHA DO ADMINISTRADOR*/
+
+        const admin_senha = document.getElementById('admin_senha');
+        const a_senha_mensagem = document.getElementById('a_senha_mensagem');
+
+        btn_eliminar_admin.disabled = true;
+
+        admin_senha.addEventListener('blur', function() {
+            if(admin_senha.value != ''){
+            const valor = senhaAdmin(admin_senha.value);
+                valor.then(
+                    valor=>
+                    {
+                        if(valor.senha != true){
+                           admin_senha.value = '';
+                           btn_eliminar_admin.disabled = true;
+                           admin_senha_mensagem.innerHTML = 'Senha do Administrador Errada';
+                        }
+                        else{
+                            btn_eliminar_admin.disabled = false;
+                            admin_senha_mensagem.innerHTML = '';
+                        } 
+                        
+                    }
+                )
+                }
+        });
+
+        async function senhaAdmin(senha){
+            try{
+                var mgs = 'Erro ao acessar o Banco de dados';
+                const resposta = await fetch('http://localhost:8000/api/senha/'+ senha,
+                {
+                    method:'POST',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                    ,
+                    body: JSON.stringify({ senha })
+                });
+                const user = await resposta.json();
+                return user;
+            }catch(e){
+                console.log(mgs);
+            }
+        }
+
+
     });
 
 

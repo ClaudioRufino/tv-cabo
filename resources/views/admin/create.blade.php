@@ -64,11 +64,11 @@
                     <span id="senha_mensagem" class="error-message"></span>
                 </div>
 
-                <!-- <div class="form-group mb-1">
+                <div class="form-group mb-1">
                     <label for="c_senha">Senha do Admin Principal</label>
                     <input type="password" class="form-control" id="a_senha" name="a_senha">
                     <span id="a_senha_mensagem" class="error-message"></span>
-                </div> -->
+                </div>
 
                 <div class="form-group">
                     <div class="card shadow mb-4">

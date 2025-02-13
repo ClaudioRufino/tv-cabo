@@ -37,13 +37,13 @@
             <div class="card-body">
                 <div class="form-group mb-0">
                     <label for="example-select">Nome</label>
-                    <input type="text" class="form-control" id="nome" name="name" required>
+                    <input type="text" class="form-control" id="nome" name="name"  required>
                     <span id="nome_mensagem" class="error-message"></span>
                 </div>
 
                 <div class="form-group mb-0">
                 <label for="example-multiselect">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <input type="email" class="form-control" id="email" name="email"  required>
                     <span id="email_mensagem" class="error-message"></span>
                 </div>
 
@@ -64,11 +64,11 @@
                     <span id="senha_mensagem" class="error-message"></span>
                 </div>
 
-                <div class="form-group mb-1">
+                <!-- <div class="form-group mb-1">
                     <label for="c_senha">Senha do Admin Principal</label>
                     <input type="password" class="form-control" id="a_senha" name="a_senha">
                     <span id="a_senha_mensagem" class="error-message"></span>
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <div class="card shadow mb-4">
@@ -151,7 +151,7 @@ const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const email = document.getElementById('email');
 const email_mgs = document.getElementById('email_mensagem');
 
- btn_cadastrar.disabled = true;
+// btn_cadastrar.disabled = true;
 
 email.addEventListener('blur', (e)=>{
 

@@ -9,3 +9,8 @@
 - admin
 * Email:maicon@gmail.com
 * senha: 12345
+
+
+A questão do armazenamento local, poderá ser feito com base em duas circunstâncias
+1 - Quando estiver usando a máquina virtual
+2 - Quando estiver a ser usado numa máquina normal.

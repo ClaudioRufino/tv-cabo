@@ -80,6 +80,8 @@ class UserController extends Controller
         }
         else{
             $caminho = time(). '.' . request()->foto->getClientOriginalExtension();
+            
+            return $caminho;
             request()->foto->move(public_path('light/assets/avatars/admin'), $caminho);
         }
         

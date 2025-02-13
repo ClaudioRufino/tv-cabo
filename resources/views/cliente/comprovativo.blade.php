@@ -25,7 +25,7 @@
         }
 
         .div-titulo {
-            width: 8%;
+            width: 100%;
             margin-left: 20px;
             position: relative;
             top: 6px;
@@ -83,7 +83,7 @@
         <img src="light/assets/images/logo-tvcj.png">
         <div class="header">
             <div class="div-titulo">
-                <span class="letra">TVCJ</span>
+                <span class="letra">Transforme sua TV com a melhor conexão, canais exclusivos e entretenimento sem limites!</span>
             </div>
         </div>
 

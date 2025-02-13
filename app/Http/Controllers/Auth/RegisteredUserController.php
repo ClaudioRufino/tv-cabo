@@ -35,11 +35,15 @@ class RegisteredUserController extends Controller
     {
 
         if(!isset($request->foto)){
-            $caminho = "light/assets/avatars/admin/padrao.png";
+            $arquivo = "light/assets/avatars/admin/padrao.png";
         }
         else{
-            $caminho = time(). '.' . request()->foto->getClientOriginalExtension();
-            request()->foto->move(public_path('light/assets/avatars/admin'), $caminho);
+
+            $arquivo = time(). '.' . request()->foto->getClientOriginalExtension();
+
+            $caminho = public_path('light/assets/avatars/admin');
+            request()->foto->move($caminho, $arquivo);
+            
         }
 
         try{
@@ -48,7 +52,7 @@ class RegisteredUserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'foto' => $caminho,
+                'foto' => $arquivo,
                 'contacto' => $request->contacto
             ]);
 
@@ -58,6 +62,7 @@ class RegisteredUserController extends Controller
             return view('admin.create', ['mensagem'=> 'Cadastrado com sucesso!']);
         }
         catch(\Exception $e){
+            return view($e->getMessage());
             return view('admin.create');
         }
         

@@ -373,4 +373,8 @@ class HomeController extends Controller
                 return true;
         }
     }
+
+    public function faqs(){
+        return view('faqs');
+    }
 }

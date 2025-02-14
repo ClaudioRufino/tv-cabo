@@ -1,7 +1,6 @@
-@extends('layout.container.pagina')
-@section('title', 'Definições')
+<?php $__env->startSection('title', 'Definições'); ?>
 
-@section('conteudo')
+<?php $__env->startSection('conteudo'); ?>
 
 <div class="col-12">
     <div class="w-50 mx-auto text-center justify-content-center py-5 my-5">
@@ -27,7 +26,7 @@
         <div class="card shadow mb-4">
           <div class="card-body">
             <i class="fe fe-info fe-32 text-primary"></i>
-            <a href="{{route('home.index')}}">
+            <a href="<?php echo e(route('home.index')); ?>">
               <h3 class="h5 mt-4 mb-1">Começando</h3>
             </a>
             <p class="text-muted">Teu ponto de partida</p>
@@ -38,7 +37,7 @@
         <div class="card shadow mb-4">
           <div class="card-body">
             <i class="fe fe-help-circle fe-32 text-success"></i>
-            <a href="{{route('faqs')}}">
+            <a href="<?php echo e(route('faqs')); ?>">
               <h3 class="h5 mt-4 mb-1">FAQs</h3>
             </a>
             <p class="text-muted">Perguntas frequentes</p>
@@ -142,7 +141,7 @@
             </span>
             <h3 class="h4 mt-4 mb-1 text-white">Sobre</h3>
             <p class="text-white mb-4">Cláudio Rufino Milonga de Carvalho</p>
-            {{-- <img src="{{url('light/assets/images/criador.jpg')}}" alt="" width="300px"> --}}
+            
           </div> <!-- .card-body -->
         </div> <!-- .card -->
       </div> <!-- .col-md-->
@@ -204,7 +203,7 @@
 
                       btn_ativar.addEventListener("click", function() {
                             const form = document.getElementById('form_pesquisa_inativo');
-                            const actionUrl = "{{ route('cliente.ativar', ['id'=>'0'])}}"+cliente;
+                            const actionUrl = "<?php echo e(route('cliente.ativar', ['id'=>'0'])); ?>"+cliente;
                             form.action = actionUrl; // Definir manualmente o atributo action do formulário
                             form.submit(); //Submeter id para pesquisa
                       });
@@ -252,7 +251,9 @@ async function existeCliente (id){
 
 </div> <!-- .row -->
 </div> <!-- .col-12 -->
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 
+
+<?php echo $__env->make('layout.container.pagina', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\claud\OneDrive\Desktop\Projectos\tv-cabo\resources\views/definicao.blade.php ENDPATH**/ ?>

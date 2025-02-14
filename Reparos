@@ -1,4 +1,20 @@
 
+Passos para a implantação desse projecto
+
+1 - Baixar o Composer
+
+2 - Baixar o Xamp
+    - Após ter instalado, é necessário que se faça a configuração do Xamp antes de instalar o Laravel.
+    - Abra o Xamp e clique em config que localizado no Apache
+    - Clique em PHP (php.ini)
+    - Procura por ;extension=zip e remover o ";", ficando simplesmente extension=zip
+
+
+3 - Permitir o reconhecimento do PDF no projecto é necessário configurar novamente o Xamp, desta vez removendo ";":
+    - ;extension=gd, ficando simplesmente extension=gd
+
+
+
 
 
 * - Ao passar com o rato por cima dos ícones do cabeçalho, deve aparecer uma mensagem dizendo o que o ícone representa

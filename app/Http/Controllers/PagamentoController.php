@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use Barryvdh\DomPDF\Facade\Pdf;
+
 class PagamentoController extends Controller
 {
     /**
@@ -153,5 +155,23 @@ class PagamentoController extends Controller
         $divida = Divida::all()->where('cliente_id', $id)->where('mes', $mes)->where('ano', $ano);
         if($divida->isEmpty()) return false;
         return true;
+    }
+
+    public function imprimirPagamento($id, $nome)
+    {
+
+        $dados = DB::table('pagamentos')
+        ->join('clientes', 'clientes.id', '=', 'pagamentos.id')
+        ->select('*')
+        ->where('pagamentos.id', $id)
+        ->first();
+
+        // return $dados;
+
+        /*Gera o comprovativo de cadastro */
+
+        $pdf = Pdf::loadView('pagamento.comprovativo', compact('dados'));
+        return $pdf->stream('Ficha.pdf');
+
     }
 }

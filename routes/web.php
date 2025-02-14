@@ -62,7 +62,11 @@ Route::get('definicao', [HomeController::class, 'definicao'])->name('home.defini
 /* Rotas complementares do Pagamento de mensalidade e dívida */
 Route::get('pagamentoId/{id}', [PagamentoController::class, 'createId'])->name('pagamentoId');
 Route::get('pagamentoP/{id}/{ano}', [PagamentoController::class, 'showP'])->name('pagamento.showP');
+
+Route::get('pagamentoImprimir/{id}/{nome}', [PagamentoController::class, 'imprimirPagamento'])->name('imprimirPagamento');
+
 Route::get('pagamento/{id}/{ano}/{mes}/{valor}', [PagamentoController::class, 'editar'])->name('pagamento.editar');
+
 
 
 /* Rotas complementares do Pagamento de Multas */
@@ -76,6 +80,11 @@ Route::get('calendario', function(){
 Route::get('/', function(){
     return view('auth.login');
 });
+
+Route::get('/faqs', [HomeController::class, 'faqs'])->name('faqs');
+    
+
+
 
 
 Route::get('/clienteAtivar/{id}', [ClienteController::class, 'ativar'])->name('cliente.ativar');

@@ -146,9 +146,12 @@ class PagamentoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pagamento $pagamento)
+    public function destroy($id)
     {
-        //
+        $pagamento = Pagamento::find($id);
+        $idCliente = $pagamento->cliente_id;
+        $pagamento->delete();
+        return redirect()->route('cliente.show', $idCliente);
     }
 
     private function devendo($id, $mes, $ano){

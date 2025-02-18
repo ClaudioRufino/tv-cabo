@@ -1,34 +1,33 @@
-@extends('layout.container.pagina')
-@section('title', 'Perfil')
+<?php $__env->startSection('title', 'Perfil'); ?>
 
 
-@section('conteudo')
+<?php $__env->startSection('conteudo'); ?>
     
 <div class="col-12">
     <h2 class="h3 mb-4 page-title">Perfil</h2>
     <div class="row mt-5 align-items-center">
       <div class="col-md-3 text-center mb-5">
         <div class="avatar avatar-xl">
-          <img src="{{url($cliente->foto)}}" alt="Avatar do cliente" class="avatar-img rounded-circle">
+          <img src="<?php echo e(url($cliente->foto)); ?>" alt="Avatar do cliente" class="avatar-img rounded-circle">
         </div>
       </div>
       <div class="col">
         <div class="row align-items-center">
           <div class="col-md-7">
-            <h4 class="mb-1">{{$cliente->nome_abreviado}}</h4>
+            <h4 class="mb-1"><?php echo e($cliente->nome_abreviado); ?></h4>
             <p class="small mb-3"><span class="badge badge-dark">Luanda, Angola</span></p>
           </div>
         </div>
         <div class="row mb-4">
           <div class="col-md-7">
             <p class="text-mute"> 
-                {{$cliente->nome}} é um/a cliente que está connosco desde {{$cliente->data_contrato}}. Seu pagamento é feito no dia {{$cliente->dia_pagamento}} de todos os meses. Seu contacto é {{$cliente->contacto}}. Somos muito gratos por té-lo como cliente.
+                <?php echo e($cliente->nome); ?> é um/a cliente que está connosco desde <?php echo e($cliente->data_contrato); ?>. Seu pagamento é feito no dia <?php echo e($cliente->dia_pagamento); ?> de todos os meses. Seu contacto é <?php echo e($cliente->contacto); ?>. Somos muito gratos por té-lo como cliente.
             </p>
           </div>
           <div class="col">
-            <p class="small mb-0 text-mute"><b>Linha</b> - {{$cliente->linha}}</p>
-            <p class="small mb-0 text-mute"><b>Rua</b> - {{$cliente->rua}}</p>
-            <p class="small mb-0 text-mute"><b>Número da casa</b> - {{$cliente->num_casa}}</p>
+            <p class="small mb-0 text-mute"><b>Linha</b> - <?php echo e($cliente->linha); ?></p>
+            <p class="small mb-0 text-mute"><b>Rua</b> - <?php echo e($cliente->rua); ?></p>
+            <p class="small mb-0 text-mute"><b>Número da casa</b> - <?php echo e($cliente->num_casa); ?></p>
           </div>
         </div>
       </div>
@@ -52,7 +51,7 @@
             </div> 
           </div>
           <div class="card-footer">
-            <a href="{{route('cliente.edit', $cliente->id)}}" class="d-flex justify-content-between text-muted"><span>Editar Cliente</span><i class="fe fe-chevron-right"></i></a>
+            <a href="<?php echo e(route('cliente.edit', $cliente->id)); ?>" class="d-flex justify-content-between text-muted"><span>Editar Cliente</span><i class="fe fe-chevron-right"></i></a>
           </div> 
         </div> 
       </div>
@@ -74,7 +73,7 @@
             </div> 
           </div> 
           <div class="card-footer">
-            <a href="{{route('pagamentoId', $cliente->id)}}" class="d-flex justify-content-between text-muted"><span>Efectuar Pagamento</span><i class="fe fe-chevron-right"></i></a>
+            <a href="<?php echo e(route('pagamentoId', $cliente->id)); ?>" class="d-flex justify-content-between text-muted"><span>Efectuar Pagamento</span><i class="fe fe-chevron-right"></i></a>
           </div> 
         </div> 
       </div> 
@@ -94,7 +93,7 @@
             </div> 
           </div> 
           <div class="card-footer">
-            <a href="{{route('pedido.show', $cliente->id)}}" class="d-flex justify-content-between text-muted"><span>Fazer Pedido</span><i class="fe fe-chevron-right"></i></a>
+            <a href="<?php echo e(route('pedido.show', $cliente->id)); ?>" class="d-flex justify-content-between text-muted"><span>Fazer Pedido</span><i class="fe fe-chevron-right"></i></a>
           </div> <!-- .card-footer -->
         </div> <!-- .card -->
       </div> <!-- .col-md-->
@@ -105,11 +104,11 @@
     <div class="card-deck my-4">
       <div class="card mb-4 shadow">
         <div class="card-body text-center my-4">
-          <a href="{{route('divida.show', $cliente->id)}}">
+          <a href="<?php echo e(route('divida.show', $cliente->id)); ?>">
             <h3 class="h5 mt-4 mb-0">Dívida</h3>
           </a>
           <p class="text-muted">contraída</p>
-          <span class="h1 mb-0">{{$cliente->divida}}</span>
+          <span class="h1 mb-0"><?php echo e($cliente->divida); ?></span>
           <p class="text-muted">kz</p>
           <ul class="list-unstyled">
             <li>As dívidas que forem contraídas</li>
@@ -122,11 +121,11 @@
 
       <div class="card mb-4">
         <div class="card-body text-center my-4">
-          <a href="{{route('multa.show', $cliente->id)}}">
+          <a href="<?php echo e(route('multa.show', $cliente->id)); ?>">
             <h3 class="h5 mt-4 mb-0">Multa</h3>
           </a>
           <p class="text-muted">penalizada</p>
-          <span class="h1 mb-0">{{$cliente->multa}}</span>
+          <span class="h1 mb-0"><?php echo e($cliente->multa); ?></span>
           <p class="text-muted">kz</p>
           <ul class="list-unstyled">
             <li>A multa pode ser imposta</li>
@@ -138,7 +137,7 @@
       </div> 
     </div> 
 
-    <h5 class="mb-3">Histórico de pagamento -  {{date('Y')}}</h5>
+    <h5 class="mb-3">Histórico de pagamento -  <?php echo e(date('Y')); ?></h5>
     <table class="table table-borderless table-striped">
       <thead>
         <tr role="row">
@@ -153,30 +152,31 @@
       </thead>
       <tbody>
 
-        @foreach ($cliente->pagamentos as $pagamento)
+        <?php $__currentLoopData = $cliente->pagamentos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pagamento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <tr>
-          <td>{{$pagamento->id}}</td>
-          <td>{{$pagamento->data_pagamento}}</td>
-          <td>{{$pagamento->valor}} kz</td>
+          <td><?php echo e($pagamento->id); ?></td>
+          <td><?php echo e($pagamento->data_pagamento); ?></td>
+          <td><?php echo e($pagamento->valor); ?> kz</td>
           
-          @switch($pagamento->mes)
-              @case(1) <td>{{"Janeiro"}}</td> @break
-              @case(2) <td>{{"Fevereiro"}}</td> @break
-              @case(3) <td>{{"Março"}}</td> @break
-              @case(4) <td>{{"Abril"}}</td> @break
-              @case(5) <td>{{"Maio"}}</td> @break
-              @case(6) <td>{{"Junho"}}</td> @break
-              @case(7) <td>{{"Julho"}}</td> @break
-              @case(8) <td>{{"Agosto"}}</td> @break
-              @case(9) <td>{{"Setembro"}}</td> @break
-              @case(10) <td>{{"Outubro"}}</td> @break
-              @case(11) <td>{{"Novembro"}}</td> @break
-              @case(12) <td>{{"Dezembro"}}</td> @break
-          @endswitch
+          <?php switch($pagamento->mes):
+              case (1): ?> <td><?php echo e("Janeiro"); ?></td> <?php break; ?>
+              <?php case (2): ?> <td><?php echo e("Fevereiro"); ?></td> <?php break; ?>
+              <?php case (3): ?> <td><?php echo e("Março"); ?></td> <?php break; ?>
+              <?php case (4): ?> <td><?php echo e("Abril"); ?></td> <?php break; ?>
+              <?php case (5): ?> <td><?php echo e("Maio"); ?></td> <?php break; ?>
+              <?php case (6): ?> <td><?php echo e("Junho"); ?></td> <?php break; ?>
+              <?php case (7): ?> <td><?php echo e("Julho"); ?></td> <?php break; ?>
+              <?php case (8): ?> <td><?php echo e("Agosto"); ?></td> <?php break; ?>
+              <?php case (9): ?> <td><?php echo e("Setembro"); ?></td> <?php break; ?>
+              <?php case (10): ?> <td><?php echo e("Outubro"); ?></td> <?php break; ?>
+              <?php case (11): ?> <td><?php echo e("Novembro"); ?></td> <?php break; ?>
+              <?php case (12): ?> <td><?php echo e("Dezembro"); ?></td> <?php break; ?>
+          <?php endswitch; ?>
 
           <td><span class="dot dot-lg bg-success mr-2"></span>Pago</td>
           <td>
-            {{$pagamento->atendido_por}}
+            <?php echo e($pagamento->atendido_por); ?>
+
           </td>
           <td>
             <div class="dropdown">
@@ -184,23 +184,23 @@
                 <span class="sr-only">Action</span>
               </button>
               <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="{{ route('pagamento.editar', ['id'=> $cliente->id, 'ano'=> $pagamento->ano, 'mes'=> $pagamento->mes, 'valor'=>$pagamento->valor ] ) }}">Editar</a>
+                <a class="dropdown-item" href="<?php echo e(route('pagamento.editar', ['id'=> $cliente->id, 'ano'=> $pagamento->ano, 'mes'=> $pagamento->mes, 'valor'=>$pagamento->valor ] )); ?>">Editar</a>
                 
-                <form action="{{route('pagamento.destroy', $pagamento->id)}}" method="post" class="form_apagar">
-                  @csrf
-                  @method('DELETE')
+                <form action="<?php echo e(route('pagamento.destroy', $pagamento->id)); ?>" method="post" class="form_apagar">
+                  <?php echo csrf_field(); ?>
+                  <?php echo method_field('DELETE'); ?>
 
-                  <input type="hidden" name="id_pagamento" class="pagamento_id" value="{{ $pagamento->id }}">
-                  <button type="button" data-id="{{$pagamento->id}}" class="apagar-button dropdown-item" data-toggle="modal" data-target="#modalApagarPagamento">Apagar</button>
+                  <input type="hidden" name="id_pagamento" class="pagamento_id" value="<?php echo e($pagamento->id); ?>">
+                  <button type="button" data-id="<?php echo e($pagamento->id); ?>" class="apagar-button dropdown-item" data-toggle="modal" data-target="#modalApagarPagamento">Apagar</button>
 
                 </form>
-                <a class="dropdown-item" href="{{route('imprimirPagamento', ['id'=>$pagamento->id, 'nome'=>$cliente->nome])}}">Imprimir</a>
-                <a class="dropdown-item" href="{{route('pagamento.showP', ['id'=>$cliente->id, 'ano'=>date('Y')])}}">Ver mais</a>
+                <a class="dropdown-item" href="<?php echo e(route('imprimirPagamento', ['id'=>$pagamento->id, 'nome'=>$cliente->nome])); ?>">Imprimir</a>
+                <a class="dropdown-item" href="<?php echo e(route('pagamento.showP', ['id'=>$cliente->id, 'ano'=>date('Y')])); ?>">Ver mais</a>
               </div>
             </div>
           </td>
         </tr>
-        @endforeach
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
         <div class="modal fade" id="modalApagarPagamento" tabindex="-1" role="dialog" aria-labelledby="varyModalLabel" aria-hidden="true">
@@ -220,8 +220,8 @@
                     <div class="modal-footer">
                         <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Cancelar</button>
                         <form  id="modal-delete-pagamento" action="#" method="POST">
-                                @csrf
-                                @method('DELETE')
+                                <?php echo csrf_field(); ?>
+                                <?php echo method_field('DELETE'); ?>
                             <button type="submit" class="btn btn-danger mb-2">Eliminar</button>
                         </form>
                 </div>
@@ -300,5 +300,7 @@
 
     </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layout.container.pagina', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\6. ENGENHARIA\Projectos\WEB\LARAVEL\Projectos Pessoais\TV-CABO\tv-cabo\resources\views/cliente/show.blade.php ENDPATH**/ ?>

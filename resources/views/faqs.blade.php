@@ -4,6 +4,10 @@
 
 @section('conteudo')
 
-<h2>Estou funcionando normalmente</h2>
+    <div class="col-12 bg-success">
+        <div>
+            Sou um texto e estou funcionando muito BEM
+        </div>
+    </div>
 
 @endsection

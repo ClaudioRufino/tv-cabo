@@ -14,9 +14,7 @@
         <form  method="POST" action="{{ route('user.update', $admin->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="col-auto">
-            <button type="submit" class="btn btn-primary" id="btn_atualizar">Atualizar</button>
-            </div>
+            
                 </div>
                 <hr class="my-4">
                 <div class="row">
@@ -77,6 +75,10 @@
                           <span id="file_mensagem" class="error-message"></span>
                         </div> 
                       </div>
+                </div>
+
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary btn-block" id="btn_atualizar">Atualizar</button>
                 </div>
             </div>
         </div>

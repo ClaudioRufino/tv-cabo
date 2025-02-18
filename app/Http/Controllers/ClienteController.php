@@ -240,5 +240,9 @@ class ClienteController extends Controller
 
     }
 
+    public function inativos(){
+        return view('cliente.inativos');
+    }
+
 
 }

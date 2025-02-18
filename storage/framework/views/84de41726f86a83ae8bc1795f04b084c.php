@@ -1,8 +1,6 @@
-@extends('layout.container.principal')
+<?php $__env->startSection('title', 'Home'); ?>
 
-@section('title', 'Home')
-
-@section('conteudo')
+<?php $__env->startSection('conteudo'); ?>
 
     <div class="col-12">
         
@@ -55,4 +53,5 @@
 
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.container.principal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\6. ENGENHARIA\Projectos\WEB\LARAVEL\Projectos Pessoais\TV-CABO\tv-cabo\resources\views/faqs.blade.php ENDPATH**/ ?>

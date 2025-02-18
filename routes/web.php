@@ -67,7 +67,8 @@ Route::get('pagamentoImprimir/{id}/{nome}', [PagamentoController::class, 'imprim
 
 Route::get('pagamento/{id}/{ano}/{mes}/{valor}', [PagamentoController::class, 'editar'])->name('pagamento.editar');
 
-
+// Rota que aponta para restauração de clientes inativos
+Route::get('/inativos', [ClienteController::class, 'inativos'])->name('cliente.inativos');
 
 /* Rotas complementares do Pagamento de Multas */
 Route::get('pagamentoMultaId/{cliente_id}/{multa_id}', [MultaController::class, 'createId'])->name('pagamentoMultaId');
@@ -88,12 +89,6 @@ Route::get('/faqs', [HomeController::class, 'faqs'])->name('faqs');
 
 
 Route::get('/clienteAtivar/{id}', [ClienteController::class, 'ativar'])->name('cliente.ativar');
-
-Route::get('/page2', [ClienteController::class, 'pagina2']);
-
-Route::get('page3', function(){
-    return view('paginacao');
-})->name('page3');
 
 
 

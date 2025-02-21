@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Divida;
 use App\Models\Ficha_Contrato;
 use App\Models\Multa;
+use App\Models\Sistema;
 use App\Models\Notificacao;
 use App\Models\Pagamento;
 use App\Models\Pedido;
@@ -349,7 +350,16 @@ class HomeController extends Controller
     }
 
     public function definicao(){
-        return view('definicao');
+        $sistema = Sistema::find(1)->first();
+
+        $sistema = (Object)[
+            'multa' => $sistema->multa? "Sim" : "Não definido",
+            'mensalidade' => $sistema->mensalidade? "Sim" : "Não definido",
+            'ativos' => $sistema->ativos? "Sim" : "Não definido",
+            'inativos' => $sistema->inativos? "Sim" : "Não definido",
+            'descricao' => $sistema->descricao? "Sim" : "Não definido",
+        ];
+        return view('definicao', compact('sistema'));
     }
 
     public function cadastradoHoje($cliente){

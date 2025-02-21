@@ -9,6 +9,7 @@ use App\Http\Controllers\DividaController;
 use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\FichaContratoController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SistemaController;
 use App\Http\Controllers\LinhaController;
 use App\Http\Controllers\MultaController;
 use App\Http\Controllers\NotificacaoController;
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function () {
         'user' => UserController::class,
         'linha' => LinhaController::class,
         'multa' => MultaController::class,
+        'sistema' => SistemaController::class,
         'pedido' => PedidoController::class,
         'divida' => DividaController::class,
         'agencia' => AgenciaController::class,

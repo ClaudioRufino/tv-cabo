@@ -62,7 +62,7 @@ class HomeController extends Controller
         }
 
         $clientes = (Object)[
-            'total' => Cliente::count()?:1, Cliente::count(),
+            'total' => Cliente::all()->where('estado', '1')->count()?:1, Cliente::count(),
             'mensalidade' => $mensalidade,
             'inscritos_no_mes'=> $inscritos,
             'total_multas' => Multa::count(),
@@ -95,6 +95,8 @@ class HomeController extends Controller
         $hoje = date($hoje) ;
 
         $multas = Multa::all()->where('data_emissao', $hoje); // Assegura que se entra uma vez na atribuição da multa
+        
+        
         if($multas->isEmpty()){
             $this->atribuirMulta($dia_atual, $mes_atual, $ano_atual);
         }
@@ -106,56 +108,10 @@ class HomeController extends Controller
             $this->cadastrarNotificacao();
         }
 
-        return view('home', compact('clientes'));
+        $sistema = Sistema::find(1);
+
+        return view('home', compact('clientes', 'sistema'));
         
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-       
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(int $id)
-    {
-        
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Cliente $cliente)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Cliente $cliente)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(int $id)
-    {
-        return "Destroy";
     }
 
     public function inscritos_no_mes(int $mes):int
@@ -209,14 +165,30 @@ class HomeController extends Controller
     }
 
     public function atribuirMulta($dia, $mes, $ano){
-        
-        $dia_pagamento = $dia - 11; // Pegar todos os clientes que devem pagar nesse dia.
 
+        // Pegar todos os clientes que devem pagar nesse dia. 11 porque a multa deve ser atribuida apenas 10 dias depois do dia de pagamento
+        $dia_pagamento = $dia - 11; 
+
+        /* Considerando que estamos no inicio do ano (Janeiro) e queremos atribuir multa com base ao mes passado que corresponde 
+           consequentemente ao ano anterior, por isso do (ano-1) */
         if($mes == 1){
-            $total_dias_do_mes = cal_days_in_month(CAL_GREGORIAN, 12, ($ano-1)); 
+
+            if($dia_pagamento > 0){
+                $total_dias_do_mes = cal_days_in_month(CAL_GREGORIAN, $mes, ($ano)); 
+            }
+            else{
+                $total_dias_do_mes = cal_days_in_month(CAL_GREGORIAN, 12, ($ano-1));
+            }
         }
         else{
-            $total_dias_do_mes = cal_days_in_month(CAL_GREGORIAN, $mes-1, $ano); // Total de dias do mes
+            
+            if($dia_pagamento > 0){
+                $total_dias_do_mes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano); // Total de dias do mes
+            }
+            else{
+                 $total_dias_do_mes = cal_days_in_month(CAL_GREGORIAN, $mes-1, $ano);
+            }
+
         }
         
         // Criar uma variavel para determinar a verificação dos pedidos quanto ao mes.
@@ -238,6 +210,7 @@ class HomeController extends Controller
         }
 
         $clientes_a_pagarem = $this->busca_clientes($dia_pagamento);
+
 
         if( count($clientes_a_pagarem) != 0){
 
@@ -313,9 +286,11 @@ class HomeController extends Controller
 
     public function multa($cliente){
 
+        $sistema = Sistema::find(1);
+
         //Cadastramento multa automaticamente
         $cliente = Multa::create([
-            'valor'=> 500,
+            'valor'=> $sistema->multa,
             'estado' => 1,
             'descricao' => "Excedeu 10 dias do dia do pagamento!",
             'data_emissao' => date('Y-m-d'),
@@ -352,11 +327,15 @@ class HomeController extends Controller
     public function definicao(){
         $sistema = Sistema::find(1)->first();
 
+        $clientesActivos = Cliente::all()->where('estado', '1')->count();
+        $clientesInativos = Cliente::all()->where('estado', '0')->count();
+
         $sistema = (Object)[
-            'multa' => $sistema->multa? "Sim" : "Não definido",
-            'mensalidade' => $sistema->mensalidade? "Sim" : "Não definido",
-            'ativos' => $sistema->ativos? "Sim" : "Não definido",
-            'inativos' => $sistema->inativos? "Sim" : "Não definido",
+            'multa' => $sistema->multa? $sistema->multa : "Não definido",
+            'mensalidade' => $sistema->mensalidade? $sistema->mensalidade : "Não definido",
+            'dia_significativo' => $sistema->dia_significativo? $sistema->dia_significativo : "Não definido",
+            'ativos' => $clientesActivos,
+            'inativos' => $clientesInativos,
             'descricao' => $sistema->descricao? "Sim" : "Não definido",
         ];
         return view('definicao', compact('sistema'));

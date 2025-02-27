@@ -84,21 +84,14 @@ Route::get('/', function(){
     return view('auth.login');
 });
 
+
 Route::get('/faqs', [HomeController::class, 'faqs'])->name('faqs');
-    
-
-
-
-
 Route::get('/clienteAtivar/{id}', [ClienteController::class, 'ativar'])->name('cliente.ativar');
-
 
 
 Route::get('teste', function(){
     return view('teste');
 })->name('teste');
-
-
 
 /** Routas geradas pelo Breeze para Autenticação */
 

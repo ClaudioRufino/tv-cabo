@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Cliente;
+use App\Models\Sistema;
 use App\Models\Divida;
 use App\Models\Pagamento;
 use Illuminate\Http\Request;
@@ -19,7 +20,6 @@ class PagamentoController extends Controller
      */
     public function index()
     {
-        //
         return view('pagamento.index');
     }
 
@@ -29,13 +29,15 @@ class PagamentoController extends Controller
     public function create()
     {
         // Registo do pagamento da mensalidade
-        return view('pagamento.create');
+        $sistema = Sistema::find(1);
+        return view('pagamento.create', compact('sistema'));
     }
 
     public function createId(int $id)
     {
         // Registo do pagamento da mensalidade com o id já estampado
-        return view('pagamento.create', ['pagamentoId' => $id]);
+        $sistema = Sistema::find(1);
+        return view('pagamento.create', ['pagamentoId' => $id, 'sistema'=> $sistema]);
     }
 
     /**
@@ -105,9 +107,6 @@ class PagamentoController extends Controller
     public function editar(int $id, $ano, $mes, $valor)
     {
         // Pegando o ano com base na data do pagamento
-
-        // Pegar o id do pagamento com base no mes e ano de pagamento
-        // $id_pagamento = Pagamento::all()->where('cliente_id', $id)->where('mes', $mes)->where('ano', $ano);
 
         $id_pagamento = DB::table('pagamentos')
             ->select('id')

@@ -65,13 +65,13 @@
 
             <div class="col-md-6 border-top py-3">
               <p class="mb-1"><strong class="text-muted">Preço</strong></p>
-              <h4 class="mb-0">2000.00</h4>
+              <h4 class="mb-0">{{ isset($sistema->mensalidade)? $sistema->mensalidade: 0 }}</h4>
               <p class="small text-muted mb-0"><span>TVCJ-price</span></p>
             </div> <!-- .col -->
 
             <div class="col-md-6 border-top py-3">
               <p class="mb-1"><strong class="text-muted">Multa</strong></p>
-              <h4 class="mb-0">500.00</h4>
+              <h4 class="mb-0">{{isset($sistema->multa)? $sistema->multa: 0}}</h4>
               <p class="small text-muted mb-0"><span>25% Mensalidade</span></p>
             </div> <!-- .col -->
 

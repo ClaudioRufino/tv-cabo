@@ -131,7 +131,7 @@ class ClienteController extends Controller
         /* Dívida do cliente */
         $dividas_total = Divida::all()->where('cliente_id', $id)->where('estado', '1')->sum('valor');
 
-         /* Dívida do cliente */
+         /* Multa do cliente */
          $multa_do_cliente = Multa::all()->where('cliente_id', $id)->where('estado', '1')->sum('valor');
 
         $cliente = (Object)[
@@ -150,7 +150,6 @@ class ClienteController extends Controller
             'dia_pagamento' => $cliente->ficha_contrato->dia_pagamento
         ];
 
-        // return $cliente->pagamentos;
         return view('cliente.show', compact('cliente'));
     }
 

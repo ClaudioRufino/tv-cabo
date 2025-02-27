@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('multa')->nullable();
             $table->string('mensalidade')->nullable();
             $table->string('ativos')->nullable(); 
+            $table->string('dia_significativo')->nullable(); 
             $table->date('inativos')->nullable();
             $table->string('data_atual')->nullable();
             $table->date('descricao')->nullable();

@@ -1,7 +1,6 @@
-@extends('layout.container.pagina')
-@section('title', 'Pagamento')
+<?php $__env->startSection('title', 'Pagamento'); ?>
 
-@section('conteudo')
+<?php $__env->startSection('conteudo'); ?>
 
 <div class="col-11">
     <h2 class="page-title">Realizar Pagamento</h2>
@@ -13,7 +12,7 @@
       <div class="card-body" style="">
 
         <form method="post" id="form_pagamento">
-          @csrf
+          <?php echo csrf_field(); ?>
         <div class="row">
 
           <div class="col-md-6 p-4" style="border:1px solid #ddd; border-radius:10px;">
@@ -21,24 +20,24 @@
             <div class="form-group mb-3">
                 <label for="example-palaceholder">Código do Cliente</label>
 
-                @php
+                <?php
                   if(isset($pagamentoId)) $valor_id = $pagamentoId;
                   else $valor_id = 1;
-                @endphp
+                ?>
                
                 <select class="form-control" id="cliente_id" name="cliente_id">
-                  @for ($i = $valor_id; $i <= 500; $i++)
-                      <option value="{{$i}}">{{$i}}</option>
-                  @endfor
+                  <?php for($i = $valor_id; $i <= 500; $i++): ?>
+                      <option value="<?php echo e($i); ?>"><?php echo e($i); ?></option>
+                  <?php endfor; ?>
                 </select>
               </div>
 
             <div class="form-group mb-3">
               <label for="simpleinput">Ano</label>
               <select class="form-control" id="ano" name="ano"> 
-                  @for ($i = 2025; $i <= 2030; $i++)
-                      <option value="{{$i}}">{{$i}}</option>
-                  @endfor
+                  <?php for($i = 2025; $i <= 2030; $i++): ?>
+                      <option value="<?php echo e($i); ?>"><?php echo e($i); ?></option>
+                  <?php endfor; ?>
               </select>
             </div>
 
@@ -63,9 +62,9 @@
             <div class="form-group mb-3">
               <label for="example-password">Valor</label>
               <select class="form-control" id="valor_pagamento" name="valor">
-                  @for ($i = $sistema->mensalidade; $i <= 5000; $i = $i + 500)
-                      <option value="{{$i}}">{{$i}}</option>
-                  @endfor
+                  <?php for($i = $sistema->mensalidade; $i <= 5000; $i = $i + 500): ?>
+                      <option value="<?php echo e($i); ?>"><?php echo e($i); ?></option>
+                  <?php endfor; ?>
               </select>
             </div>
 
@@ -77,18 +76,18 @@
 
           </div> 
 
-          {{--  d-flex justify-content-center   align-items-center --}}
+          
           <div class="col-md-6">
             <div class="w-100 d-flex justify-content-center align-items-center">
               
               <!-- Exibida apenas em telas pequenas -->
-              <img src="{{url('light/assets/images/payment.png')}}" class="img-fluid d-block d-md-none d-lg-none" alt="Pequena">
+              <img src="<?php echo e(url('light/assets/images/payment.png')); ?>" class="img-fluid d-block d-md-none d-lg-none" alt="Pequena">
 
               <!-- Exibida apenas em telas médias -->
-              <img src="{{url('light/assets/images/payment.png')}}" class="img-fluid d-none d-md-block d-lg-none" alt="Média">
+              <img src="<?php echo e(url('light/assets/images/payment.png')); ?>" class="img-fluid d-none d-md-block d-lg-none" alt="Média">
 
               <!-- Exibida apenas em telas grandes -->
-              <img src="{{url('light/assets/images/payment.png')}}" 
+              <img src="<?php echo e(url('light/assets/images/payment.png')); ?>" 
                    id="img_pagamento" 
                    alt="imagem de pagamento de mensalidade"
                    style="width:60%; height:350px;border-radius:5px; margin-top:20px;" class="d-none d-md-none d-lg-block"
@@ -133,7 +132,7 @@
                                       setTimeout(() => { mensagem.style.display = "none"; }, 2000);
                                   } 
                                   else{
-                                        var actionUrl = "{{ route('pagamento.store')}}";
+                                        var actionUrl = "<?php echo e(route('pagamento.store')); ?>";
                                         this.action = actionUrl; // Definir manualmente o atributo action do formulário
                                         this.submit(); //Submeter id para pesquisa
                                   }
@@ -194,7 +193,9 @@
 
   </div>
 
-  @endsection
+  <?php $__env->stopSection(); ?>
 
   
 
+
+<?php echo $__env->make('layout.container.pagina', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\claud\OneDrive\Desktop\Projectos\tv-cabo\resources\views/pagamento/create.blade.php ENDPATH**/ ?>

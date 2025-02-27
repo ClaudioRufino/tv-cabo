@@ -14,6 +14,7 @@ class Sistema extends Model
         'mensalidade',
         'ativos',
         'inativos',
+        'dia_significativo',
         'descricao',
     ];
 

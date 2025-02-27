@@ -2,14 +2,9 @@
 
 Questões para tratar
 -------------------------------------------------- 
-3 - Verificar acúmulo multas e pedidos
-
-4 - Não passar multa para o primeiro mes do cliente
-
-5 - Definir o valor da mensalidade
 
 
-
+2 - Não passar multa para o primeiro mes do cliente
 
 
 
@@ -44,3 +39,10 @@ Passos para a implantação desse projecto
 A questão do armazenamento local, poderá ser feito com base em duas circunstâncias
 1 - Quando estiver usando a máquina virtual
 2 - Quando estiver a ser usado numa máquina normal.
+
+
+
+O que fazer antes de rodar o sistema na implantação
+
+1 - Adicionar Dados do sistema
+

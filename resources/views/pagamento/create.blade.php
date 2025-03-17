@@ -3,7 +3,7 @@
 
 @section('conteudo')
 
-<div class="col-12">
+<div class="col-11">
     <h2 class="page-title">Realizar Pagamento</h2>
     <p class="text-muted">Nesta seção poderá fazer o pagamento mensais dos clientes.</p>
     <div class="card shadow mb-4">
@@ -77,14 +77,37 @@
 
           </div> 
 
-          <div class="col-md-6 text-center"> 
-              <img 
+          {{--  d-flex justify-content-center   align-items-center --}}
+          <div class="col-md-6">
+            <div class="w-100 d-flex justify-content-center align-items-center">
+              
+
+              {{-- <img 
                   src="{{url('light/assets/images/payment.png')}}" 
                   id="img_pagamento" 
-                  alt="imagem descrevendo pagamento de mensalidade"
-                  style="width:70%; height:290px;border-radius:5px; margin-top:20px">
-              <br>
+                  alt="imagem de pagamento de mensalidade"
+                  style="width:70%; height:290px;border-radius:5px; margin-top:20px; border:1px solid red;"
+              > --}}
               
+              <!-- Exibida apenas em telas pequenas -->
+              <img src="{{url('light/assets/images/payment.png')}}" class="img-fluid d-block d-md-none d-lg-none" alt="Pequena">
+
+              <!-- Exibida apenas em telas médias -->
+              <img src="{{url('light/assets/images/payment.png')}}" class="img-fluid d-none d-md-block d-lg-none" alt="Média">
+
+              <!-- Exibida apenas em telas grandes -->
+              <img src="{{url('light/assets/images/payment.png')}}" 
+                   id="img_pagamento" 
+                   alt="imagem de pagamento de mensalidade"
+                   style="width:60%; height:350px;border-radius:5px; margin-top:20px;" class="d-none d-md-none d-lg-block"
+              >
+
+              <!-- Exibida em telas grandes e extra grandes  -->
+              {{-- <img src="{{url('light/assets/images/payment.png')}}"  alt="Grande"  
+                    style=" height:300px; border:1px solid red;" class="d-none d-md-none d-lg-block"> --}}
+
+              <br>
+            </div> 
           </div> 
           
         </div>

@@ -1,8 +1,6 @@
-@extends('layout.container.principal')
+<?php $__env->startSection('title', 'FAQS'); ?>
 
-@section('title', 'FAQS')
-
-@section('conteudo')
+<?php $__env->startSection('conteudo'); ?>
 
     <div class="col-12">
 
@@ -53,6 +51,11 @@
 
       </div>
       
+        
+
+        
+
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.container.principal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\claud\OneDrive\Desktop\Projectos\tv-cabo\resources\views/faqs.blade.php ENDPATH**/ ?>

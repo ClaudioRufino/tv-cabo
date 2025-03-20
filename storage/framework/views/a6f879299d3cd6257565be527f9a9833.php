@@ -1,9 +1,7 @@
-
-@extends('layout.container.pagina_principal')
-@section('title', 'Cadastrar Admin')
+<?php $__env->startSection('title', 'Cadastrar Admin'); ?>
 
 
-@section('conteudo')
+<?php $__env->startSection('conteudo'); ?>
 
 <div class="col-12 col-md-10" style="background:">
     <div class="row align-items-center my-4">
@@ -16,20 +14,21 @@
     
     <hr class="my-4">
 
-    <form  method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
-          @csrf
+    <form  method="POST" action="<?php echo e(route('register')); ?>" enctype="multipart/form-data">
+          <?php echo csrf_field(); ?>
             
 
-    @isset($mensagem)
+    <?php if(isset($mensagem)): ?>
         <div class="form-group mb-3">
             <div class="alert alert-success text-center" role="alert" id="mensagem">
-                {{$mensagem}}
+                <?php echo e($mensagem); ?>
+
             </div>
             <div class="mt-2">
-                <a href="{{route('login')}}" class="btn btn-primary btn-block">Login</a>
+                <a href="<?php echo e(route('login')); ?>" class="btn btn-primary btn-block">Login</a>
             </div>
         </div>
-    @endisset
+    <?php endif; ?>
 
     <div class="row">
         <div class="col-md-8 mb-4">
@@ -64,11 +63,7 @@
                     <span id="senha_mensagem" class="error-message"></span>
                 </div>
 
-                {{-- <div class="form-group mb-1">
-                    <label for="c_senha">Senha do Admin Principal</label>
-                    <input type="password" class="form-control" id="a_senha" name="a_senha">
-                    <span id="a_senha_mensagem" class="error-message"></span>
-                </div> --}}
+                
 
                 <div class="form-group">
                     <div class="card shadow mb-4">
@@ -269,4 +264,5 @@ async function existeCampo(campo, valor){
 
 
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.container.pagina_principal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\claud\OneDrive\Desktop\Projectos\tv-cabo\resources\views/admin/create.blade.php ENDPATH**/ ?>

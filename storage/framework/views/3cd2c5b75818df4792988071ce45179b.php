@@ -1,9 +1,9 @@
 
-@extends('layout.container.pagina')
-@section('title', 'Notificações')
+
+<?php $__env->startSection('title', 'Notificações'); ?>
 
 
-@section('conteudo')
+<?php $__env->startSection('conteudo'); ?>
 
 <div class="col-12">
 <div class="row">
@@ -11,7 +11,7 @@
       <h2 class="h4 mb-1 text-center">Notificações</h2>
       <p class="mb-3">A tabela abaixo apresenta os clientes notificados para o pagamento de hoje!</p>
       <form 
-            action="{{route('multa.create')}}" 
+            action="<?php echo e(route('multa.create')); ?>" 
             method="get" 
             class="text-right"
             style=
@@ -38,24 +38,24 @@
             </thead>
             <tbody>
 
-                @foreach ($clientes as $cliente)
+                <?php $__currentLoopData = $clientes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cliente): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr class="accordion-toggle collapsed" id="c-2474" data-toggle="collapse" data-parent="#c-2474" href="#collap-2474">
-                        <td>{{$cliente->id}}</td>
-                        <td class="text-left">{{$cliente->nome}}</td>
-                        <td>{{$cliente->contacto}}</td>
-                        <td class="text-center">{{date('Y-m-d')}}</td>
+                        <td><?php echo e($cliente->id); ?></td>
+                        <td class="text-left"><?php echo e($cliente->nome); ?></td>
+                        <td><?php echo e($cliente->contacto); ?></td>
+                        <td class="text-center"><?php echo e(date('Y-m-d')); ?></td>
                         <td>2000</td>
                         <td><span class="badge badge-pill badge-danger mr-2">Não Pago</span><small class="text-muted"></small></td>
                         <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="text-muted sr-only">Acção</span>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="{{route('pagamentoId', $cliente->id)}}">Pagar</a>
-                            <a class="dropdown-item" href="{{route('cliente.show', $cliente->id)}}">Perfil</a>
+                            <a class="dropdown-item" href="<?php echo e(route('pagamentoId', $cliente->id)); ?>">Pagar</a>
+                            <a class="dropdown-item" href="<?php echo e(route('cliente.show', $cliente->id)); ?>">Perfil</a>
                         </div>
                         </td>
                     </tr>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
             </tbody>
           </table>
@@ -65,4 +65,5 @@
   </div>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.container.pagina', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\6. ENGENHARIA\Projectos\WEB\LARAVEL\Projectos Pessoais\TV-CABO\tv-cabo\resources\views/notificacao/index.blade.php ENDPATH**/ ?>

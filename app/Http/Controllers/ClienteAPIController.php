@@ -11,6 +11,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Support\Facades\DB;
+
 class ClienteAPIController extends Controller
 {
     // Listagem dos clientes
@@ -220,5 +222,22 @@ class ClienteAPIController extends Controller
 
     public function teste(){
         return response()->json('Sucesso!');
+    }
+
+    public function clientesPagandoHoje(){
+
+        $clientes = DB::table('clientes as c')
+        ->join('notificacaos as n', 'c.id', '=', 'n.cliente_id')
+        ->select(DB::raw('c.id, c.nome, c.contacto, n.data'))
+        ->where('n.data', '=', date('Y-m-d'))
+        ->where('c.estado', 1)
+        ->get();
+
+        if(count($clientes) == 0){
+            return response()->json(['estado' => false]);
+        }
+        else{
+            return response()->json(['estado' => true]);
+        }
     }
 }

@@ -44,11 +44,13 @@ Route::delete('/pagamento/{id}', [PagamentoAPIController::class, 'destroy']);
 
 
 
-// Route::post('/teste/{senha}', [ClienteAPIController::class, 'ativar_cliente']);
-
 /* END-POINT DO SISTEMA TV-CABO para verificar clientes que pagam hoje */
 
 Route::get('/notificacao', [NotificacaoController::class, 'existeNotificacao']); // Procura se já existe notificação para hoje
+
+// Notificacao de clientes pagamento hoje
+Route::get('/clientesPagandoHoje', [ClienteAPIController::class, 'clientesPagandoHoje']); // Procura se já existe notificação para hoje
+
 
 /*END-POINT DO SISTEMA TV-CABO para verificar se o número de casa já foi usado */
 Route::get('/casa/{num_casa}', [ClienteAPIController::class, 'casa']);
@@ -60,8 +62,6 @@ Route::post('/senha/{senha?}', [UserAPIController::class, 'verifica_senha']);
 Route::delete('/users/{id}', [UserAPIController::class, 'destroy']);
 
 
-// Testando Paginator
-Route::get('/clientesPage/{numPage}', [ClienteAPIController::class, 'page']);
 
 
 

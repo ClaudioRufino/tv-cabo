@@ -32,9 +32,10 @@
 
         {{-- Link relativo as notificações do sistema --}}
         <li class="nav-item nav-notif">
-          <a class="nav-link text-success my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
+          <a class="nav-link text-primary my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
             <span class="fe fe-bell fe-16"></span>
             <span id="ponto_notificacao"></span>
+            
           </a>
         </li>
 
@@ -173,7 +174,6 @@
                       <small><strong>Informações do sistema</strong></small>
                       <div class="my-0 text-muted small">
                         <small class="badge badge-pill badge-light text-muted">{{date('Y-m-d')}}</small>
-                        {{-- <a href="{{route('notificacao.index')}}"> <br> Ver info do sistema </a> --}}
                       </div>
                     </div>
                   </div>
@@ -188,7 +188,6 @@
                       <small><strong>Outras notificações</strong></small>
                       <div class="my-0 text-muted small">
                         <small class="badge badge-pill badge-light text-muted">{{date('Y-m-d')}}</small>
-                        {{-- <a href="{{route('notificacao.index')}}"> Ver </a> --}}
                       </div>
                     </div>
                   </div>
@@ -254,14 +253,37 @@
             } else {
                 console.error('Erro ao buscar cliente:', response.statusText);
             }
-
             
         }catch(e){
             console.log("Erro:" + e);
         }
 
-       
+    }
 
+    $pagou = clientesPagandoHoje();
+
+    $pagou.then(valor=>{
+
+        if(valor.estado == true){
+            let divPonto = document.getElementById("ponto_notificacao");
+            divPonto.classList.add("dot", "dot-md", "bg-success");
+        }
+
+    });
+
+    async function clientesPagandoHoje() {
+        try{
+            const response = await fetch('http://localhost:8000/api/clientesPagandoHoje');
+            if (response.ok) {
+                const estado = await response.json();
+                return estado;
+            } else {
+                console.error('Erro ao verificar os clientes:', response.statusText);
+            }
+            
+        }catch(e){
+            console.log("Erro:" + e);
+        }
     }
 
 </script>

@@ -22,7 +22,6 @@ class NotificacaoController extends Controller
         ->where('c.estado', 1)
         ->get();
 
-        // return date('Y-m-d');
         return view('notificacao.index', ['clientes'=> $clientes]);
     }
 
